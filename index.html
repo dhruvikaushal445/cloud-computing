@@ -1,0 +1,2411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Computing — Exam Preparation Q&amp;A (A4)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1e3a5f;
+  --ink-soft:#2c4a6e;
+  --muted:#5a6a7a;
+  --pen-blue:#1a4b8c;
+  --pen-red:#c0392b;
+  --margin-red:#e85a4f;
+  --rule:#b7d0e0;
+  --paper:#fbf6e9;
+  --paper-edge:#e8dcc4;
+  --bg:#b8a990;
+  --desk:#9e8f76;
+  --source-bg:rgba(255,250,235,.85);
+  --highlight:#fff3a3;
+  --stamp:#b33a3a;
+  --line-gap:28px;
+  --margin-x:22mm;
+  --hand:"Kalam",cursive;
+  --title:"Patrick Hand",cursive;
+  --stamp-font:"Special Elite",cursive;
+  --ui:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --nav-w:300px;
+  --vercel-bg:#000000;
+  --vercel-panel:#0a0a0a;
+  --vercel-border:#333333;
+  --vercel-text:#ededed;
+  --vercel-muted:#888888;
+  --vercel-hover:#111111;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  padding-left:0;
+  font-family:var(--hand);
+  background:var(--vercel-bg);
+  color:var(--ink);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+body.nav-open{overflow:hidden}
+
+/* Open menu button */
+.nav-toggle{
+  position:fixed;
+  top:1rem;left:1rem;
+  z-index:120;
+  width:48px;height:48px;
+  border-radius:12px;
+  border:1px solid var(--vercel-border);
+  background:#0a0a0a;
+  color:#fff;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--ui);
+  font-size:1.25rem;
+  line-height:1;
+  box-shadow:0 0 0 1px rgba(255,255,255,.04),0 8px 30px rgba(0,0,0,.45);
+  transition:background .15s ease,border-color .15s ease,transform .15s ease;
+}
+.nav-toggle:hover{background:#111;border-color:#444;transform:scale(1.04)}
+.nav-toggle:focus-visible{outline:2px solid #fff;outline-offset:3px}
+body.nav-open .nav-toggle{opacity:0;pointer-events:none}
+
+.nav-backdrop{
+  position:fixed;inset:0;
+  z-index:130;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(4px);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .2s ease,visibility .2s ease;
+}
+body.nav-open .nav-backdrop{opacity:1;visibility:visible}
+
+/* Minimal Vercel-style nav panel (closed by default) */
+.toolbar{
+  position:fixed;
+  top:0;left:0;bottom:0;
+  width:min(var(--nav-w),92vw);
+  z-index:140;
+  display:flex;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  align-items:stretch;
+  gap:0;
+  padding:1.25rem 1rem 1.35rem;
+  background:var(--vercel-panel);
+  color:var(--vercel-text);
+  border-right:1px solid var(--vercel-border);
+  box-shadow:none;
+  font-family:var(--ui);
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  transform:translateX(-105%);
+  transition:transform .28s cubic-bezier(.2,.8,.2,1);
+}
+body.nav-open .toolbar{transform:translateX(0)}
+
+.nav-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:.75rem;
+  padding:0 .35rem .9rem;
+  margin-bottom:.65rem;
+  border-bottom:1px solid var(--vercel-border);
+}
+.nav-brand{
+  color:#fff;
+  font-weight:600;
+  font-size:1.35rem;
+  letter-spacing:-.04em;
+  line-height:1.2;
+}
+.nav-brand small{
+  display:block;
+  margin-top:.2rem;
+  color:var(--vercel-muted);
+  font-size:.78rem;
+  font-weight:500;
+  letter-spacing:0;
+}
+.nav-close{
+  width:40px;height:40px;
+  flex:0 0 auto;
+  border-radius:10px;
+  border:1px solid var(--vercel-border);
+  background:transparent;
+  color:var(--vercel-muted);
+  font-size:1.4rem;
+  line-height:1;
+  cursor:pointer;
+  font-family:var(--ui);
+  transition:background .15s ease,color .15s ease;
+}
+.nav-close:hover{background:#111;color:#fff}
+
+.nav-label{
+  margin:.85rem .35rem .35rem;
+  color:#666;
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.toolbar a.nav-link,
+.toolbar button.nav-link{
+  color:var(--vercel-text);
+  text-decoration:none;
+  background:transparent;
+  border:1px solid transparent;
+  border-radius:10px;
+  padding:.7rem .85rem;
+  font-size:1.15rem;
+  font-weight:500;
+  letter-spacing:-.03em;
+  cursor:pointer;
+  font-family:var(--ui);
+  text-align:left;
+  width:100%;
+  transition:background .15s ease,color .15s ease,border-color .15s ease,transform .12s ease;
+}
+.toolbar a.nav-link:hover,
+.toolbar button.nav-link:hover{
+  background:#111;
+  color:#fff;
+  border-color:#333;
+  transform:translateX(2px);
+}
+.toolbar a.nav-link:active,
+.toolbar button.nav-link:active{transform:scale(.98)}
+.toolbar a.nav-link:focus-visible,
+.toolbar button.nav-link:focus-visible,
+.toolbar input:focus-visible,
+.nav-close:focus-visible{
+  outline:2px solid #fff;
+  outline-offset:2px;
+}
+.toolbar a.nav-link span,
+.toolbar button.nav-link span{
+  display:block;
+  color:var(--vercel-muted);
+  font-size:.75rem;
+  font-weight:500;
+  letter-spacing:0;
+  margin-top:.15rem;
+}
+
+.toolbar .search-wrap{
+  margin-left:0;
+  margin-top:auto;
+  padding-top:1rem;
+  display:flex;
+  flex-direction:column;
+  gap:.45rem;
+  align-items:stretch;
+  width:100%;
+  border-top:1px solid var(--vercel-border);
+}
+.toolbar .search-wrap label{
+  color:var(--vercel-muted);
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:0 .15rem;
+}
+.toolbar input[type=search]{
+  border:1px solid var(--vercel-border);
+  border-radius:10px;
+  padding:.75rem .85rem;
+  width:100%;
+  min-width:0;
+  font-size:1rem;
+  background:#000;
+  color:var(--vercel-text);
+  font-family:var(--ui);
+}
+.toolbar input[type=search]::placeholder{color:#666}
+.toolbar input[type=search]:hover{border-color:#444}
+.site{
+  max-width:920px;
+  margin:1.4rem auto 3.5rem;
+  padding:0 .75rem;
+  padding-top:4.25rem;
+}
+
+/* Notebook / exam sheet */
+.a4{
+  --pad-top:12mm;
+  --pad-right:14mm;
+  --pad-bottom:14mm;
+  --pad-left:calc(var(--margin-x) + 4mm);
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(90deg,transparent calc(var(--margin-x) - 1px),var(--margin-red) var(--margin-x),transparent calc(var(--margin-x) + 1.5px)),
+    repeating-linear-gradient(
+      transparent,
+      transparent calc(var(--line-gap) - 1px),
+      var(--rule) var(--line-gap)
+    );
+  background-size:100% 100%, 100% var(--line-gap);
+  background-position:0 0, 0 var(--pad-top);
+  width:210mm;max-width:100%;
+  min-height:297mm;margin:0 auto 1.6rem;
+  padding:var(--pad-top) var(--pad-right) var(--pad-bottom) var(--pad-left);
+  position:relative;
+  box-shadow:
+    2px 3px 0 rgba(0,0,0,.06),
+    6px 10px 22px rgba(62,42,34,.28),
+    inset 0 0 60px rgba(210,180,140,.12);
+  page-break-after:always;break-after:page;
+  font-family:var(--hand);
+  font-size:15.5px;
+  color:var(--pen-blue);
+  border:1px solid var(--paper-edge);
+  border-radius:1px 4px 2px 1px;
+}
+.a4::before,
+.a4::after{display:none}
+
+.page-header{
+  border-bottom:2px solid var(--pen-blue);
+  border-bottom-style:double;
+  padding-bottom:.45rem;margin-bottom:1rem;
+  display:flex;justify-content:space-between;gap:1rem;align-items:flex-end;
+  font-family:var(--title);
+  font-size:.95rem;color:var(--muted);
+  background:transparent;
+}
+.page-header strong{
+  color:var(--pen-red);
+  font-size:1.15rem;display:block;
+  letter-spacing:.02em;
+}
+.page-footer{
+  border-top:1.5px dashed var(--pen-blue);
+  margin-top:1.4rem;padding-top:.45rem;
+  font-family:var(--title);
+  font-size:.85rem;color:var(--muted);
+  display:flex;justify-content:space-between;
+}
+.meta-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:.45rem 1rem;
+  font-family:var(--title);
+  font-size:1rem;color:var(--ink-soft);
+  margin:1rem auto .8rem;
+  border:2px solid var(--pen-blue);
+  padding:.7rem .85rem;
+  background:rgba(255,255,255,.35);
+  max-width:520px;
+}
+.meta-grid span{
+  border-bottom:1.5px dotted var(--pen-blue);
+  min-width:4rem;display:inline-block;
+}
+.cover{
+  text-align:center;
+  display:flex;flex-direction:column;justify-content:center;
+  min-height:250mm;
+  position:relative;
+}
+.cover h1{
+  font-family:var(--title);
+  font-size:2.6rem;color:var(--pen-blue);
+  letter-spacing:.03em;margin:.5rem 0;
+  text-decoration:underline;
+  text-decoration-thickness:2px;
+  text-underline-offset:6px;
+}
+.cover h2{
+  font-family:var(--hand);
+  font-size:1.35rem;font-weight:700;margin:.35rem 0 1rem;
+  color:var(--ink);
+}
+.cover .badge{
+  display:inline-block;
+  border:2.5px solid var(--pen-red);
+  color:var(--pen-red);
+  padding:.45rem 1.1rem;margin:1rem 0;
+  font-family:var(--stamp-font);
+  font-size:1rem;
+  letter-spacing:.06em;
+  transform:rotate(-2deg);
+  background:rgba(255,255,255,.4);
+  box-shadow:2px 2px 0 rgba(192,57,43,.15);
+}
+.cover .uni{
+  color:var(--pen-red);
+  font-weight:700;font-size:1.25rem;margin-top:1.2rem;
+  font-family:var(--title);
+}
+
+.q-block{margin:1.1rem 0 1.5rem;break-inside:avoid}
+.q-head{
+  border:none;
+  border-bottom:2.5px solid var(--pen-blue);
+  border-top:2.5px solid var(--pen-blue);
+  background:transparent;
+  padding:.55rem 0 .5rem;
+  margin-bottom:.85rem;
+}
+.q-head .qno{
+  color:var(--pen-red);
+  font-weight:700;
+  font-family:var(--title);
+  font-size:1.2rem;
+}
+.q-head .marks{
+  float:right;
+  color:var(--pen-red);
+  font-weight:700;
+  font-family:var(--stamp-font);
+  font-size:.95rem;
+  border:2px solid var(--pen-red);
+  padding:.1rem .45rem;
+  transform:rotate(3deg);
+  background:rgba(255,255,255,.5);
+}
+.q-head .qtext{
+  clear:both;margin-top:.4rem;
+  font-weight:700;
+  font-size:1.08rem;
+  color:var(--pen-blue);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.ans-label{
+  font-weight:700;
+  color:var(--pen-red);
+  font-family:var(--title);
+  font-size:1.15rem;
+  margin:.5rem 0 .35rem;
+}
+.ans-label::after{content:" ✎";opacity:.7}
+h3.sec{
+  font-size:1.12rem;
+  color:var(--pen-blue);
+  margin:1rem 0 .4rem;
+  font-family:var(--title);
+  font-weight:700;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  text-decoration-thickness:1.5px;
+}
+p{margin:.4rem 0 .6rem}
+ol,ul{margin:.35rem 0 .8rem;padding-left:1.4rem}
+li{margin:.3rem 0}
+li > span.pt{font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+
+.source{
+  margin-top:1rem;
+  padding:.55rem .75rem;
+  background:var(--source-bg);
+  border:1.5px dashed var(--muted);
+  border-left:4px solid #c4a35a;
+  font-family:var(--title);
+  font-size:.92rem;
+  color:var(--muted);
+}
+.source strong{color:var(--ink-soft);font-family:var(--stamp-font);font-size:.8rem;letter-spacing:.03em}
+.remember{
+  margin-top:.85rem;
+  padding:.6rem .75rem;
+  border:2px dashed var(--pen-blue);
+  background:rgba(255,255,255,.45);
+  font-size:1em;
+  position:relative;
+}
+.remember strong{
+  font-family:var(--title);
+  color:var(--pen-red);
+  font-size:1.05rem;
+}
+table.cmp{
+  width:100%;border-collapse:collapse;margin:.7rem 0 1rem;font-size:.95em;
+  break-inside:avoid;
+  background:rgba(255,255,255,.4);
+  max-width:100%;
+}
+table.cmp th,table.cmp td{
+  border:1.5px solid var(--pen-blue);
+  padding:.45rem .55rem;vertical-align:top;
+}
+table.cmp th{
+  background:rgba(30,58,95,.08);
+  color:var(--pen-blue);
+  font-family:var(--title);
+  font-size:1rem;
+  font-weight:700;
+}
+table.cmp tr:nth-child(even) td{background:rgba(255,255,255,.35)}
+.diagram{
+  margin:.85rem auto;text-align:center;break-inside:avoid;max-width:100%;
+}
+.diagram img{
+  max-width:100%;height:auto;
+  border:2px solid var(--pen-blue);
+  box-shadow:3px 3px 0 rgba(30,58,95,.12);
+  background:#fff;
+}
+.diagram .cap{
+  font-family:var(--title);
+  font-size:.9rem;color:var(--muted);margin-top:.4rem;
+}
+.toc{font-size:1.02rem}
+.toc a{color:var(--pen-blue);text-decoration:underline;text-underline-offset:3px}
+.toc a:hover{color:var(--pen-red)}
+.toc li{margin:.4rem 0}
+.toc .marks{color:var(--pen-red);font-size:.9em;font-family:var(--stamp-font)}
+.toc h3.sec{margin-top:1.1rem}
+.hl{background:var(--highlight)}
+.svc-stack{display:flex;flex-direction:column;gap:.4rem;max-width:420px;margin:.7rem auto}
+.svc-stack .layer{
+  border:2px solid var(--pen-blue);
+  padding:.55rem;text-align:center;
+  font-family:var(--title);
+  font-weight:700;font-size:1.05rem;
+  box-shadow:2px 2px 0 rgba(30,58,95,.1);
+}
+.svc-stack .saas{background:rgba(173,216,230,.55)}
+.svc-stack .paas{background:rgba(180,220,170,.55)}
+.svc-stack .iaas{background:rgba(255,220,150,.55)}
+.flow{display:flex;flex-direction:column;align-items:center;gap:.3rem;font-family:var(--title);font-size:.95rem;margin:.7rem 0}
+.flow .box{border:2px solid var(--pen-blue);padding:.4rem .75rem;min-width:220px;text-align:center;background:rgba(255,255,255,.5)}
+.flow .oval{border:2px solid var(--pen-blue);border-radius:999px;padding:.35rem 1rem;background:rgba(255,255,255,.5)}
+.flow .diamond{border:2px solid var(--pen-blue);padding:.5rem;background:rgba(255,248,220,.7);max-width:260px;text-align:center}
+.flow .arrow{color:var(--pen-red);font-weight:700}
+.cloud-types{display:grid;grid-template-columns:repeat(2,1fr);gap:.55rem;margin:.6rem 0}
+.cloud-types .ct{
+  border:2px solid var(--pen-blue);padding:.55rem;text-align:center;
+  font-family:var(--title);font-size:.95rem;
+  background:rgba(255,255,255,.4);
+}
+.note-limited{
+  background:rgba(255,230,230,.55);
+  border-left:4px solid var(--pen-red);
+  padding:.55rem .75rem;margin:.5rem 0;font-size:.95em;
+}
+/* Easy study diagrams */
+.ez-diag{
+  margin:.9rem auto 1rem;padding:.7rem .75rem;
+  border:2px solid var(--pen-blue);
+  background:rgba(255,255,255,.55);
+  break-inside:avoid;font-family:var(--title);max-width:100%;
+}
+.ez-diag .dtitle{
+  text-align:center;font-weight:700;color:var(--pen-red);
+  margin:0 0 .55rem;font-size:1.08rem;
+}
+.ez-diag .cap{
+  text-align:center;font-size:.82rem;color:var(--muted);margin-top:.55rem;
+}
+.ez-row{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;align-items:center}
+.ez-box{
+  border:2px solid var(--pen-blue);padding:.4rem .6rem;text-align:center;
+  background:#fff;min-width:88px;font-size:.92rem;color:var(--pen-blue);font-weight:700;
+}
+.ez-cloud{
+  border:2.5px dashed var(--pen-blue);border-radius:50px;padding:.55rem 1.1rem;
+  background:rgba(173,216,230,.4);font-weight:700;color:var(--pen-blue);text-align:center;
+}
+.ez-arr{font-weight:700;color:var(--pen-red);font-size:1.25rem;line-height:1}
+.ez-grid2{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.ez-grid4{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.ez-col{display:flex;flex-direction:column;gap:.35rem;align-items:center}
+.ez-vs{display:grid;grid-template-columns:1fr auto 1fr;gap:.45rem;align-items:stretch}
+.ez-bad{background:rgba(255,210,210,.5)!important;border-color:var(--pen-red)!important}
+.ez-good{background:rgba(200,235,200,.55)!important}
+.ez-soft{background:rgba(255,248,220,.7)!important}
+.ez-tiny{font-size:.8rem;font-weight:400;color:var(--muted);display:block;margin-top:.15rem}
+.diagram img,.ez-diag,.svc-stack{max-width:100%}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;margin:.7rem 0}
+#revision h2,#diagrams h2,
+h2[style*="color:var(--navy)"]{
+  color:var(--pen-red)!important;
+  font-family:var(--title)!important;
+  border-color:var(--pen-blue)!important;
+}
+
+/* ========== Responsive ========== */
+@media screen and (max-width:1100px){
+  .site{max-width:100%;padding:0 .5rem}
+  .a4{width:100%}
+}
+@media screen and (max-width:860px){
+  body{padding-left:0}
+  .nav-toggle{top:.75rem;left:.75rem;width:44px;height:44px}
+  .site{margin:0.75rem auto 2rem;padding:0 .4rem;padding-top:4rem}
+  .a4{
+    width:100%;
+    min-height:auto;
+    --margin-x:12mm;
+    --pad-top:10mm;
+    --pad-right:8mm;
+    --pad-bottom:10mm;
+    --pad-left:calc(var(--margin-x) + 2mm);
+    padding:var(--pad-top) var(--pad-right) var(--pad-bottom) var(--pad-left);
+    margin-bottom:1rem;
+    font-size:14.5px;
+    overflow-x:auto;
+  }
+  .a4::before,.a4::after{display:none}
+  .page-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.25rem;
+    font-size:.88rem;
+  }
+  .page-header strong{font-size:1.05rem}
+  .page-footer{
+    flex-direction:column;
+    gap:.2rem;
+    font-size:.8rem;
+  }
+  .meta-grid{
+    grid-template-columns:1fr;
+    max-width:100%;
+    font-size:.95rem;
+  }
+  .cover{min-height:auto;padding:1rem 0}
+  .cover h1{font-size:2rem}
+  .cover h2{font-size:1.15rem}
+  .cover p,
+  .cover .meta-grid{max-width:100%!important}
+  .q-head .marks{
+    float:none;
+    display:inline-block;
+    margin-bottom:.35rem;
+    transform:rotate(1deg);
+  }
+  .q-head .qno{font-size:1.1rem}
+  .q-head .qtext{font-size:1.02rem}
+  .diagram img{width:100%;height:auto}
+  .svc-stack{max-width:100%}
+  .flow .box{min-width:0;width:100%;max-width:280px}
+  table.cmp{
+    width:100%;
+    max-width:100%;
+    font-size:.88em;
+  }
+  .q-block{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  table.cmp th,table.cmp td{
+    padding:.35rem .4rem;
+    white-space:normal;
+    word-break:break-word;
+  }
+}
+@media screen and (max-width:640px){
+  body{font-size:15px;padding-left:0}
+  .toolbar a.nav-link,
+  .toolbar button.nav-link{font-size:1.05rem;padding:.65rem .75rem}
+  .nav-brand{font-size:1.2rem}
+  .a4{
+    --margin-x:8mm;
+    --pad-top:8mm;
+    --pad-right:5mm;
+    --pad-bottom:8mm;
+    --pad-left:calc(var(--margin-x) + 2mm);
+    font-size:14px;
+    border-radius:0;
+    box-shadow:0 4px 12px rgba(62,42,34,.2);
+  }
+  .cover h1{font-size:1.65rem}
+  .cover .badge{font-size:.88rem;padding:.35rem .7rem}
+  .cover .uni{font-size:1.05rem}
+  .ez-vs,.ez-grid2,.ez-grid4{grid-template-columns:1fr}
+  .ez-box{
+    min-width:0;
+    flex:1 1 calc(50% - .4rem);
+    font-size:.85rem;
+    padding:.35rem .45rem;
+  }
+  .ez-cloud{
+    border-radius:24px;
+    padding:.45rem .7rem;
+    font-size:.9rem;
+    width:100%;
+    max-width:100%;
+  }
+  .ez-diag{padding:.55rem .5rem;margin:.7rem 0}
+  .ez-diag .dtitle{font-size:1rem}
+  .ez-row{gap:.3rem}
+  .ez-arr{font-size:1rem}
+  .cloud-types{grid-template-columns:1fr}
+  .ans-label{font-size:1.05rem}
+  h3.sec{font-size:1.02rem}
+  ol,ul{padding-left:1.15rem}
+  .source,.remember{font-size:.9rem;padding:.5rem .55rem}
+  .toc{font-size:.98rem}
+}
+@media screen and (max-width:420px){
+  .nav-toggle{top:.65rem;left:.65rem}
+  .toolbar a.nav-link,
+  .toolbar button.nav-link{font-size:1rem}
+  .a4{
+    --margin-x:5mm;
+    padding:7mm 4mm 8mm calc(5mm + 2mm);
+    font-size:13.5px;
+    background-size:100% 100%, 100% 26px;
+  }
+  .ez-box{flex:1 1 100%}
+  .q-head .marks{font-size:.8rem}
+  .page-header strong{font-size:.95rem}
+  table.cmp{font-size:.8em}
+}
+@media screen and (min-width:861px) and (max-width:980px){
+  .site{max-width:96%}
+  .a4{width:100%;padding:12mm 12mm 12mm calc(18mm + 3mm);--margin-x:18mm}
+}
+@media print{
+  body{background:#fff;padding-left:0}
+  .toolbar,.nav-toggle,.nav-backdrop{display:none!important}
+  .site{max-width:none;margin:0;padding:0}
+  .a4{
+    box-shadow:none;margin:0;width:auto;min-height:auto;
+    border:none;
+    page-break-after:always;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+  .a4::before,.a4::after{display:none}
+  .q-block,.diagram,table.cmp,.remember,.source{break-inside:avoid}
+  a{color:inherit;text-decoration:none}
+}
+@page{size:A4;margin:8mm}
+</style>
+</head>
+<body>
+<button type="button" class="nav-toggle" id="navOpen" aria-label="Open menu" title="Menu">☰</button>
+<div class="nav-backdrop" id="navBackdrop" hidden></div>
+<nav class="toolbar" id="sideNav" aria-label="Study navigation" aria-hidden="true">
+  <div class="nav-head">
+    <div class="nav-brand">Cloud Computing<small>Exam Prep Notes</small></div>
+    <button type="button" class="nav-close" id="navClose" aria-label="Close menu">×</button>
+  </div>
+
+  <div class="nav-label">Navigate</div>
+  <a class="nav-link" href="#top">Home<span>Cover page</span></a>
+  <a class="nav-link" href="#toc">Table of Contents<span>All questions list</span></a>
+  <a class="nav-link" href="#a1q1">Assignment 1<span>Cloud basics · Virtualization</span></a>
+  <a class="nav-link" href="#a2q1">Assignment 2<span>SaaS &amp; Integration</span></a>
+  <a class="nav-link" href="#a3q1">Assignment 3<span>IaaS · Migration · Tools</span></a>
+  <a class="nav-link" href="#addq1">Additional Questions<span>Extra exam practice</span></a>
+  <a class="nav-link" href="#revision">Quick Revision<span>Key definitions</span></a>
+  <a class="nav-link" href="#diagrams">Important Diagrams<span>From study material</span></a>
+
+  <div class="nav-label">Browse</div>
+  <button type="button" class="nav-link" id="btnPrev">Previous Question<span>Go to earlier Q&amp;A</span></button>
+  <button type="button" class="nav-link" id="btnNext">Next Question<span>Go to next Q&amp;A</span></button>
+  <button type="button" class="nav-link" id="btnTop">Back to Top<span>Jump to cover</span></button>
+
+  <div class="nav-label">Export</div>
+  <button type="button" class="nav-link" id="btnPrint">Print / Save as PDF<span>A4 exam sheets</span></button>
+  <button type="button" class="nav-link" id="btnDl">Download HTML<span>Save this study file</span></button>
+
+  <div class="search-wrap">
+    <label for="searchBox">Search</label>
+    <input type="search" id="searchBox" placeholder="Question, keyword, topic...">
+  </div>
+</nav>
+<main class="site" id="top">
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Cover Page</div>
+  </div>
+
+<div class="cover">
+  <div class="uni">Institute of Advanced Research (IAR University)</div>
+  <p style="margin-top:.3rem;color:#718096;font-size:.9rem">The University for Innovation</p>
+  <div class="badge">EXAM PREPARATION NOTES</div>
+  <h1>CLOUD COMPUTING</h1>
+  <h2>Assignment Questions + Important Exam Questions</h2>
+  <p style="max-width:460px;margin:1rem auto;font-size:1.05rem">
+    Complete 5-mark Questions &amp; Answers prepared strictly from the supplied
+    Assignment PDFs, E-Notes (Units 1–3), and screenshots.
+  </p>
+  <div class="meta-grid" style="text-align:left;max-width:480px;margin:1.5rem auto">
+    <div>Student Name: <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+    <div>Enrollment No.: <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+    <div>Semester: <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+    <div>Subject Code: <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+    <div>Date: <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+    <div>Marks per Q: <span>5</span></div>
+  </div>
+  <p style="margin-top:2rem;font-size:.95rem;color:#4a5568">
+    Materials used: Assignment 1, 2 &amp; 3 · Unit-1 Introduction · SaaS Notes · IaaS/PaaS Notes
+  </p>
+</div>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 1 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Table of Contents</div>
+  </div>
+
+<div id="toc"></div>
+<h2 style="color:var(--navy);text-align:center;margin-top:0">Table of Contents</h2>
+<div class="toc">
+<h3 class="sec">Assignment 1</h3>
+<ol>
+<li><a href="#a1q1">Explain Challenges and Applications of Cloud Computing</a> — <span class="marks">5 Marks</span></li>
+<li><a href="#a1q2">Define Cloud Computing and state its desirable features</a> — <span class="marks">5 Marks</span></li>
+<li><a href="#a1q3">Explain various layers of Cloud Computing</a> — <span class="marks">5 Marks</span></li>
+<li><a href="#a1q4">Write and explain various types of deployment models</a> — <span class="marks">5 Marks</span></li>
+<li><a href="#a1q5">What is virtualization? Advantages in cloud computing</a> — <span class="marks">5 Marks</span></li>
+<li><a href="#a1q6">Explain types of virtualization in brief</a> — <span class="marks">5 Marks</span></li>
+</ol>
+<h3 class="sec">Assignment 2</h3>
+<ol>
+<li><a href="#a2q1">Explain SaaS with an example</a> — <span class="marks">5 Marks</span></li>
+<li><a href="#a2q2">What are challenges faced by SaaS? Explain in detail</a> — <span class="marks">5 Marks</span></li>
+<li><a href="#a2q3">Justify the statement, “SaaS integration is hard”</a> — <span class="marks">5 Marks</span></li>
+<li><a href="#a2q4">Explain SaaS integration services</a> — <span class="marks">5 Marks</span></li>
+<li><a href="#a2q5">Explain SaaS Integration of Products and Platforms</a> — <span class="marks">5 Marks</span></li>
+</ol>
+<h3 class="sec">Assignment 3</h3>
+<ol>
+<li><a href="#a3q1">Explain IaaS in brief</a> — <span class="marks">5 Marks</span></li>
+<li><a href="#a3q2">Discuss Virtual Provisioning in Virtualized Data Centre</a> — <span class="marks">5 Marks</span></li>
+<li><a href="#a3q3">Explain Virtual Machine Migration Services</a> — <span class="marks">5 Marks</span></li>
+<li><a href="#a3q4">Discuss Integration of Public and Private Cloud</a> — <span class="marks">5 Marks</span></li>
+<li><a href="#a3q5">Explain any three Tools and Technology used in Cloud Computing</a> — <span class="marks">5 Marks</span></li>
+</ol>
+<h3 class="sec">Additional Important Exam Questions</h3>
+<ol>
+<li><a href="#addq1">Differentiate Public Cloud and Private Cloud</a></li>
+<li><a href="#addq2">Explain Hybrid Cloud with advantages and disadvantages</a></li>
+<li><a href="#addq3">Explain Community Cloud</a></li>
+<li><a href="#addq4">Differentiate IaaS, PaaS and SaaS</a></li>
+<li><a href="#addq5">Explain Platform as a Service (PaaS)</a></li>
+<li><a href="#addq6">Explain Pre-Copy and Post-Copy Migration</a></li>
+<li><a href="#addq7">Explain Resource Provisioning and its methods</a></li>
+<li><a href="#addq8">Write a short note on Cloud Infrastructure</a></li>
+<li><a href="#addq9">Explain Characteristics of SaaS</a></li>
+<li><a href="#addq10">Explain Utility Computing and Grid Computing</a></li>
+</ol>
+<p><a href="#revision">Quick Revision — Definitions</a> · <a href="#diagrams">Important Diagrams</a></p>
+</div>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 2 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 3</div>
+  </div>
+
+<section class="q-block" id="a1q1">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.1 — Assignment 1</div>
+    <div class="qtext">Explain Challenges and Applications of Cloud Computing.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p>Cloud Computing is defined as storing and accessing data and computing services over the Internet. It is the on-demand availability of computer services like servers, networking, databases, data storage, etc. The main goal of cloud computing is to give data centers access to many users for accessing data from remote servers.</p>
+
+
+<div class="ez-diag">
+  <div class="dtitle">Cloud = Internet Access to Remote Services</div>
+  <div class="ez-row">
+    <div class="ez-box">Many Users</div>
+    <span class="ez-arr">&rarr;</span>
+    <div class="ez-cloud">Internet Cloud</div>
+    <span class="ez-arr">&rarr;</span>
+    <div class="ez-box">Remote Data Center</div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-1 E-Notes — Page 3</div>
+</div>
+
+<h3 class="sec">Challenges of Cloud Computing</h3>
+<p>From the study notes and challenge diagram, important challenges include:</p>
+<ol>
+<li><span class="pt">Internet Connectivity:</span> Cloud services depend on the Internet. Poor or unavailable connectivity affects performance and access.</li>
+<li><span class="pt">Vendor lock-in:</span> Users may become dependent on a particular Cloud Service Provider and find it difficult to move services or data to another provider.</li>
+<li><span class="pt">Limited Control:</span> Because infrastructure is managed by the provider, users may have limited control over underlying resources.</li>
+<li><span class="pt">Security:</span> Storing and accessing data through cloud infrastructure creates security concerns. The challenges diagram also highlights Security &amp; Privacy.</li>
+<li><span class="pt">Other challenges shown in the notes diagram:</span> Interoperability, Portability, Computing Performance, and Reliability &amp; Availability.</li>
+<li><span class="pt">Public-cloud related issues:</span> Performance depends on a high-speed Internet link to the provider, and the client may have no/limited control of data.</li>
+</ol>
+
+<div class="diagram">
+  <img src="assets/diagrams/challenges.png" alt="Cloud Computing Challenges Diagram">
+  <div class="cap"><strong>Diagram Source:</strong> Unit-1 E-Notes — Page 21 (Challenges)</div>
+</div>
+
+<h3 class="sec">Applications of Cloud Computing</h3>
+<p>According to the applications diagram in Unit-1 notes, cloud computing is applied in:</p>
+<ol>
+<li>Art</li>
+<li>Business</li>
+<li>Data Storage and Backup</li>
+<li>Education</li>
+<li>Entertainment</li>
+<li>Management</li>
+<li>Social</li>
+</ol>
+<p>From the handwritten assignment notes (supported by Unit-1 service-model content), practical application areas also include:</p>
+<ul>
+<li><strong>Data Storage:</strong> Users store data on remote servers and access it through the Internet.</li>
+<li><strong>Data Backup &amp; Recovery:</strong> Backup and restore are listed as advantages; storage virtualization is mainly done for backup and recovery.</li>
+<li><strong>Software Access (SaaS):</strong> Users access hosted applications via a browser (e.g., Google Apps, Salesforce, Dropbox, Slack).</li>
+<li><strong>Application Development &amp; Testing (PaaS):</strong> Programmers develop, test, run and manage applications on a cloud platform.</li>
+</ul>
+
+<div class="diagram">
+  <img src="assets/diagrams/applications.png" alt="Cloud Computing Applications">
+  <div class="cap"><strong>Diagram Source:</strong> Unit-1 E-Notes — Page 22 (Cloud Computing Application)</div>
+</div>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>Cloud computing = storing/accessing data & services over the Internet.</li><li>Major challenges: connectivity, vendor lock-in, limited control, security, interoperability, portability, performance, reliability.</li><li>Applications include storage/backup, business, education, entertainment, social, SaaS access, and PaaS development.</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-1 E-Notes — Pages 3–5, 9, 21–22, 28, 31–32; Assignment1_CC handwritten notes — Pages 1–2; WhatsApp Assignment-1 screenshot</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 3 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 4</div>
+  </div>
+
+<section class="q-block" id="a1q2">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.2 — Assignment 1</div>
+    <div class="qtext">Define cloud computing and state its desirable features.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p><strong>Definition:</strong> Cloud Computing is defined as storing and accessing data and computing services over the Internet. It is the on-demand availability of computer services like servers, networking, databases, data storage, etc. The main goal of cloud computing is to give data centers access to many users for accessing data from remote servers.</p>
+
+<h3 class="sec">Desirable Features / Advantages</h3>
+<p>The Unit-1 study notes list the following desirable features (advantages) of cloud computing:</p>
+<ol>
+<li><span class="pt">Back-up and restore data:</span> Cloud facilities help protect important files and restore them when required.</li>
+<li><span class="pt">Improved collaboration:</span> Multiple users can access shared cloud resources and work together.</li>
+<li><span class="pt">Excellent accessibility:</span> Services can be accessed over the Internet from remote locations.</li>
+<li><span class="pt">Low maintenance cost:</span> Especially in public cloud, the CSP maintains the infrastructure.</li>
+<li><span class="pt">Mobility:</span> Users are not restricted to a particular physical location.</li>
+<li><span class="pt">Unlimited storage capacity:</span> The cloud provides large / virtually limitless storage space.</li>
+<li><span class="pt">Data security:</span> Protective measures such as authentication, access control and backup support secure access.</li>
+</ol>
+<p>Additional desirable points from the assignment notes and IaaS characteristics include <strong>on-demand availability</strong> and the <strong>pay-per-use / pay-as-you-go</strong> model, where users pay according to resources consumed and avoid heavy initial hardware investment.</p>
+
+<div class="ez-diag">
+  <div class="dtitle">Cloud Computing - Simple View</div>
+  <div class="ez-row">
+    <div class="ez-box">Users</div>
+    <span class="ez-arr">&rarr;</span>
+    <div class="ez-box">Internet</div>
+    <span class="ez-arr">&rarr;</span>
+    <div class="ez-cloud">Cloud Data Center<br><span class="ez-tiny">Servers · Storage · Network · DB</span></div>
+  </div>
+  <div class="ez-row" style="margin-top:.55rem">
+    <div class="ez-box ez-soft">Backup</div>
+    <div class="ez-box ez-soft">Collaboration</div>
+    <div class="ez-box ez-soft">Accessibility</div>
+    <div class="ez-box ez-soft">Mobility</div>
+    <div class="ez-box ez-soft">Pay-per-use</div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-1 E-Notes — Pages 3–4</div>
+</div>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>Definition focuses on Internet-based storage and on-demand computing services.</li><li>Goal: remote access to data-center resources for many users.</li><li>Key features: backup/restore, collaboration, accessibility, low maintenance, mobility, storage, security, on-demand & pay-per-use.</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-1 E-Notes — Pages 3–4; Unit-3 IaaS/PaaS Notes — Pages 2–3; Assignment1_CC handwritten notes — Pages 2–4</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 4 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 5</div>
+  </div>
+
+<section class="q-block" id="a1q3">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.3 — Assignment 1</div>
+    <div class="qtext">Explain various layers of Cloud Computing.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p>Cloud computing is commonly explained using three major service layers (service models). Unit-3 notes state that IaaS forms the foundational layer of cloud computing alongside PaaS and SaaS.</p>
+
+<div class="svc-stack">
+  <div class="layer saas">SaaS — Software as a Service (Top Layer)</div>
+  <div class="layer paas">PaaS — Platform as a Service (Middle Layer)</div>
+  <div class="layer iaas">IaaS — Infrastructure as a Service (Foundational Layer)</div>
+</div>
+<div class="diagram"><div class="cap"><strong>Diagram Source:</strong> Recreated from Unit-1 E-Notes Pages 29–32 &amp; Unit-3 Page 2 (service layers)</div></div>
+
+<h3 class="sec">1. Infrastructure as a Service (IaaS)</h3>
+<p>IaaS is also known as Hardware as a Service (HaaS). It is a computing infrastructure managed over the Internet. The main advantage is that users avoid the cost and complexity of purchasing and managing physical servers.</p>
+<p><strong>Characteristics:</strong> Resources available as a service; highly scalable; dynamic and flexible; GUI and API-based access; automated administrative tasks.</p>
+<p><strong>Examples:</strong> DigitalOcean, Linode, Amazon Web Services (AWS), Microsoft Azure, Google Compute Engine (GCE), Rackspace, Cisco Metacloud.</p>
+
+<h3 class="sec">2. Platform as a Service (PaaS)</h3>
+<p>PaaS is created for the programmer to develop, test, run, and manage applications. It builds on virtualization technology so resources can be scaled up or down as needed, and provides auto-scale ability.</p>
+<p><strong>Characteristics:</strong> Accessible to various users via the same development application; integrates with web services and databases; supports multiple languages and frameworks.</p>
+<p><strong>Examples:</strong> AWS Elastic Beanstalk, Windows Azure, Heroku, Force.com, Google App Engine, Apache Stratos, Magento Commerce Cloud, OpenShift.</p>
+
+<h3 class="sec">3. Software as a Service (SaaS)</h3>
+<p>SaaS is also known as “on-demand software.” Applications are hosted by a cloud service provider. Users access them with an Internet connection and web browser.</p>
+<p><strong>Characteristics:</strong> Managed from a central location; hosted on a remote server; accessible over the Internet; users are not responsible for hardware/software updates (applied automatically); purchased on pay-as-per-use basis.</p>
+<p><strong>Examples:</strong> BigCommerce, Google Apps, Salesforce, Dropbox, ZenDesk, Cisco WebEx, Slack, GoToMeeting.</p>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>Three layers/models: IaaS, PaaS, SaaS.</li><li>IaaS = foundational virtualized infrastructure (HaaS).</li><li>PaaS = development/testing platform; SaaS = on-demand hosted applications.</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-1 E-Notes — Pages 29–32; Unit-3 IaaS/PaaS Notes — Page 2; Assignment1_CC handwritten notes — Pages 4–6</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 5 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 6</div>
+  </div>
+
+<section class="q-block" id="a1q4">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.4 — Assignment 1</div>
+    <div class="qtext">Write and explain various types of deployment models of Cloud Computing.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p>Cloud deployment models define how cloud services are made available. Unit-1 notes describe four types of cloud:</p>
+
+<div class="diagram">
+  <img src="assets/diagrams/types-of-cloud.png" alt="Types of Cloud">
+  <div class="cap"><strong>Diagram Source:</strong> Unit-1 E-Notes — Page 6 (Types of Cloud)</div>
+</div>
+
+<h3 class="sec">1. Public Cloud</h3>
+<p>Public cloud is open to all to store and access information via the Internet using the pay-per-usage method. Computing resources are managed and operated by the Cloud Service Provider (CSP).</p>
+<p><strong>Advantages:</strong> Lower cost; maintained by CSP; easier to integrate / flexible; location independent; highly scalable; accessible by the general public with no limit on number of users.</p>
+<p><strong>Disadvantages:</strong> Less secure because resources are shared publicly; performance depends on high-speed Internet; client has no control of data.</p>
+<p><strong>Examples:</strong> Amazon EC2, IBM SmartCloud Enterprise, Microsoft, Google App Engine, Windows Azure Services Platform.</p>
+
+<h3 class="sec">2. Private Cloud</h3>
+<p>Also known as an internal cloud or corporate cloud. Organizations build and manage their own data centers internally or by a third party. It can be deployed using open-source tools such as OpenStack and Eucalyptus.</p>
+<p><strong>Advantages:</strong> High security and privacy; better performance; quick on-demand IT resource delivery; full organizational control.</p>
+<p><strong>Disadvantages:</strong> Skilled people required; limited area of operations; not suitable without prebuilt infrastructure / sufficient manpower.</p>
+
+<h3 class="sec">3. Hybrid Cloud</h3>
+<p>Hybrid Cloud = Public Cloud + Private Cloud. It is partially secure: public services can be accessed by anyone, while private-cloud services are accessed only by the organization’s users.</p>
+<p><strong>Advantages:</strong> More security than public cloud; faster delivery of products/services; reduces risk; flexible (public) + secure (private) resources.</p>
+<p><strong>Disadvantages:</strong> Security not as good as private cloud; complex management; reliability depends on CSPs.</p>
+<p><strong>Examples:</strong> Google Application Suite, Office 365, Amazon Web Services.</p>
+
+<h3 class="sec">4. Community Cloud</h3>
+<p>Allows systems and services to be accessible by a group of several organizations to share information within a specific community. Owned, managed and operated by one or more organizations, a third party, or a combination.</p>
+
+<div class="ez-diag">
+  <div class="dtitle">Community Cloud</div>
+  <div class="ez-row">
+    <div class="ez-box">Org A</div>
+    <div class="ez-box">Org B</div>
+    <div class="ez-box">Org C</div>
+  </div>
+  <div class="ez-row" style="margin:.35rem 0"><span class="ez-arr">share</span></div>
+  <div class="ez-row"><div class="ez-cloud">Community Cloud<br><span class="ez-tiny">e.g. Health Care community</span></div></div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-1 E-Notes — Pages 16–17</div>
+</div>
+
+<p><strong>Example:</strong> Health Care community cloud.</p>
+<p><strong>Advantages:</strong> Cost-effective sharing; collaborative with better security than public cloud.</p>
+<p><strong>Disadvantages:</strong> Not suitable for every organization; security not as good as private cloud; fixed storage/bandwidth shared among members.</p>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>Four models: Public, Private, Hybrid, Community.</li><li>Public = CSP-managed, pay-per-use; Private = internal/corporate.</li><li>Hybrid = Public + Private; Community = shared by related organizations.</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-1 E-Notes — Pages 6–18; Assignment1_CC handwritten notes — Pages 6–7; WhatsApp Assignment-1 screenshot</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 6 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 7</div>
+  </div>
+
+<section class="q-block" id="a1q5">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.5 — Assignment 1</div>
+    <div class="qtext">What is virtualization? What is the advantage of Virtualization in cloud computing?</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p><strong>Definition:</strong> Virtualization is the “creation of a virtual (rather than actual) version of something, such as a server, a desktop, a storage device, an operating system or network resources.”</p>
+<p>In other words, Virtualization is a technique which allows sharing a single physical instance of a resource or an application among multiple customers and organizations. It does this by assigning a logical name to a physical storage and providing a pointer to that physical resource when demanded.</p>
+
+<h3 class="sec">Advantages of Virtualization in Cloud Computing</h3>
+<p>From Unit-3 notes on cloud technologies:</p>
+<ol>
+<li><span class="pt">Hardware flexibility:</span> Virtualization offers unparalleled hardware flexibility.</li>
+<li><span class="pt">Lower IT cost:</span> It significantly brings down IT maintenance and infrastructure costs.</li>
+<li><span class="pt">Efficient multi-user distribution:</span> Cloud providers can bring multiple operating systems and computer systems under one virtual machine to efficiently distribute an application among multiple users within one organization or numerous organizations in a cost-efficient and convenient manner.</li>
+</ol>
+<p>Additional advantages reflected in the assignment notes (aligned with Unit-1 usage points):</p>
+<ol>
+<li><span class="pt">Efficient resource utilization:</span> Maximizes hardware usage by running multiple virtual machines.</li>
+<li><span class="pt">Cost reduction:</span> Reduces need for multiple physical servers.</li>
+<li><span class="pt">Scalability:</span> Resources can be scaled up or down easily.</li>
+<li><span class="pt">Flexibility:</span> Supports different OS and apps on the same hardware.</li>
+<li><span class="pt">Simplified management:</span> Controlling VMs is much easier than controlling a physical server (also stated under Hardware Virtualization usage).</li>
+<li><span class="pt">Backup &amp; Recovery:</span> Storage virtualization is mainly done for backup and recovery purposes.</li>
+</ol>
+
+
+<div class="ez-diag">
+  <div class="dtitle">Virtualization Idea (1 Physical → Many Virtual)</div>
+  <div class="ez-vs">
+    <div class="ez-box ez-bad">Without Virtualization<br><span class="ez-tiny">1 OS on 1 physical machine</span></div>
+    <span class="ez-arr">&rArr;</span>
+    <div class="ez-box ez-good">With Virtualization<br><span class="ez-tiny">VM1 · VM2 · VM3 on 1 physical host</span></div>
+  </div>
+  <div class="ez-row" style="margin-top:.55rem">
+    <div class="ez-box">Physical Hardware</div>
+    <span class="ez-arr">&uarr;</span>
+    <div class="ez-cloud">Hypervisor / VMM</div>
+    <span class="ez-arr">&uarr;</span>
+    <div class="ez-box ez-soft">Multiple Users / OS</div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-1 E-Notes — Page 23 &amp; Unit-3 — Page 25</div>
+</div>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>Virtualization = virtual version of server/desktop/storage/OS/network.</li><li>Shares one physical resource among many users via logical naming/pointers.</li><li>Key benefits: flexibility, lower cost, efficient utilization, easier VM management, backup/recovery.</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-1 E-Notes — Pages 23, 25, 28; Unit-3 IaaS/PaaS Notes — Pages 25; Assignment1_CC handwritten notes — Pages 7–8</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 7 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 8</div>
+  </div>
+
+<section class="q-block" id="a1q6">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.6 — Assignment 1</div>
+    <div class="qtext">Explain types of virtualization in brief.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p>According to Unit-1 study notes, the types of virtualization are:</p>
+<ol>
+<li>Hardware Virtualization</li>
+<li>Operating System Virtualization</li>
+<li>Server Virtualization</li>
+<li>Storage Virtualization</li>
+</ol>
+
+
+<div class="ez-diag">
+  <div class="dtitle">Types of Virtualization</div>
+  <div class="ez-grid4">
+    <div class="ez-box">Hardware<br><span class="ez-tiny">VMM on hardware</span></div>
+    <div class="ez-box">Operating System<br><span class="ez-tiny">VMM on Host OS</span></div>
+    <div class="ez-box">Server<br><span class="ez-tiny">1 server → many</span></div>
+    <div class="ez-box">Storage<br><span class="ez-tiny">Many disks → 1 pool</span></div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-1 E-Notes — Pages 24–28</div>
+</div>
+
+<h3 class="sec">1. Hardware Virtualization</h3>
+<p>When the virtual machine software or Virtual Machine Manager (VMM) is directly installed on the hardware system, it is known as hardware virtualization. The main job of the hypervisor is to control and monitor the processor, memory and other hardware resources. After hardware virtualization, different operating systems can be installed and different applications can run on those OS.</p>
+<p><strong>Usage:</strong> Mainly done for server platforms, because controlling virtual machines is much easier than controlling a physical server.</p>
+
+<h3 class="sec">2. Operating System Virtualization</h3>
+<p>When the VMM is installed on the Host operating system instead of directly on the hardware system, it is known as operating system virtualization.</p>
+<p><strong>Usage:</strong> Mainly used for testing applications on different platforms of OS.</p>
+
+<h3 class="sec">3. Server Virtualization</h3>
+<p>When the VMM is directly installed on the Server system, it is known as server virtualization.</p>
+<p><strong>Usage:</strong> A single physical server can be divided into multiple servers on demand and for balancing the load.</p>
+
+<h3 class="sec">4. Storage Virtualization</h3>
+<p>Storage virtualization is the process of grouping the physical storage from multiple network storage devices so that it looks like a single storage device. It is also implemented by using software applications.</p>
+<p><strong>Usage:</strong> Mainly done for backup and recovery purposes.</p>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>Four types: Hardware, OS, Server, Storage virtualization.</li><li>Hardware: VMM on hardware; OS: VMM on host OS; Server: split one physical server; Storage: pool devices as one.</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-1 E-Notes — Pages 24–28; Assignment1_CC handwritten notes — Page 8</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 8 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 9</div>
+  </div>
+
+<section class="q-block" id="a2q1">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.1 — Assignment 2</div>
+    <div class="qtext">Explain SaaS with an example.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p><strong>Introduction:</strong> Software as a Service (SaaS) is a software distribution model in which applications are hosted by a service provider and are accessible via the Internet using a browser. It removes the need for installation, maintenance, or infrastructure management by the end user.</p>
+<p>In Unit-1 notes, SaaS is also called “on-demand software.” Applications are hosted by a CSP; users access them with an Internet connection and web browser. Updates are applied automatically and services are purchased on a pay-as-per-use basis.</p>
+
+
+<div class="ez-diag">
+  <div class="dtitle">How SaaS Works</div>
+  <div class="ez-row">
+    <div class="ez-box">User</div>
+    <span class="ez-arr">&rarr;</span>
+    <div class="ez-box">Web Browser</div>
+    <span class="ez-arr">&rarr;</span>
+    <div class="ez-box">Internet</div>
+    <span class="ez-arr">&rarr;</span>
+    <div class="ez-cloud">CSP Hosted App<br><span class="ez-tiny">e.g. Google Workspace</span></div>
+  </div>
+  <div class="ez-row" style="margin-top:.5rem">
+    <div class="ez-box ez-good">No Install</div>
+    <div class="ez-box ez-good">No Maintenance</div>
+    <div class="ez-box ez-good">Auto Updates</div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on SaaS E-Notes — Pages 1–2 &amp; Unit-1 — Page 32</div>
+</div>
+
+<h3 class="sec">Key Points</h3>
+<ol>
+<li>Managed from a central location / hosted on a remote server</li>
+<li>Accessible over the Internet</li>
+<li>Users are not responsible for hardware and software updates</li>
+<li>Multi-tenancy related delivery (from SaaS notes characteristics)</li>
+</ol>
+
+<h3 class="sec">Example</h3>
+<p><strong>Google Workspace:</strong> Users can access Gmail, Docs, Sheets and Drive directly online without installing software locally. Other popular examples from the notes include Microsoft 365, Salesforce, Dropbox, Slack, Zoom, BigCommerce, ZenDesk, Cisco WebEx and GoToMeeting.</p>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>SaaS = hosted applications accessed via browser (on-demand software).</li><li>No local installation/maintenance/infrastructure management by user.</li><li>Example: Google Workspace / Microsoft 365 / Salesforce.</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>SaaS E-Notes — Pages 1–2, 3; Unit-1 E-Notes — Page 32; Assignment2_CC handwritten notes — Page 1; WhatsApp Assignment-2 screenshot</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 9 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 10</div>
+  </div>
+
+<section class="q-block" id="a2q2">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.2 — Assignment 2</div>
+    <div class="qtext">What are challenges faced by SaaS? Explain in detail.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p>Although SaaS provides flexible and scalable software delivery, the SaaS study notes describe several important challenges:</p>
+
+<ol>
+<li><span class="pt">Data Security &amp; Privacy:</span> SaaS applications store data on third-party servers. Risks include data breaches, unauthorized access, and data loss or leaks. Robust encryption, access control, and compliance with regulations (e.g., GDPR, HIPAA) are needed.</li>
+<li><span class="pt">Internet Dependency:</span> SaaS requires a stable Internet connection. Downtime or latency affects user experience and business continuity. It is not ideal in regions with poor connectivity.</li>
+<li><span class="pt">Limited Customization:</span> Products are standardized for multi-tenancy. UI customization, feature modification and workflow adjustments are limited; custom features may need costly enterprise plans.</li>
+<li><span class="pt">Integration Complexity:</span> Businesses use multiple SaaS and on-premise tools. Integration with legacy systems can be technically complex, time-consuming and prone to data sync issues; APIs or platforms like MuleSoft/Zapier may be required.</li>
+<li><span class="pt">Vendor Lock-in:</span> Migrating from one SaaS provider to another can be technically difficult, expensive and risky for data loss. Customers become dependent on a vendor’s ecosystem, pricing and uptime.</li>
+<li><span class="pt">Performance and Reliability:</span> Shared infrastructure may cause performance degradation during peak hours, latency, or service interruptions. Organizations rely on SLAs for uptime guarantees.</li>
+<li><span class="pt">Compliance and Legal Risks:</span> Providers may store data across borders, creating risks related to data residency laws, cross-border regulations, and audit/compliance requirements.</li>
+<li><span class="pt">Frequent Updates and Changes:</span> Automatic updates may break integrations or custom workflows, introduce untested features, or require quick staff retraining.</li>
+</ol>
+
+
+<div class="ez-diag">
+  <div class="dtitle">SaaS Challenges at a Glance</div>
+  <div class="ez-grid4">
+    <div class="ez-box ez-bad">Security &amp; Privacy</div>
+    <div class="ez-box ez-bad">Internet Dependency</div>
+    <div class="ez-box ez-bad">Limited Customization</div>
+    <div class="ez-box ez-bad">Integration Complexity</div>
+    <div class="ez-box ez-bad">Vendor Lock-in</div>
+    <div class="ez-box ez-bad">Performance / Reliability</div>
+    <div class="ez-box ez-bad">Compliance / Legal</div>
+    <div class="ez-box ez-bad">Frequent Updates</div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on SaaS E-Notes — Pages 10–16</div>
+</div>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>Eight major SaaS challenges appear in the notes: security, Internet dependency, customization, integration, lock-in, performance, compliance, frequent updates.</li><li>Multi-tenancy improves efficiency but limits customization and can affect shared performance.</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>SaaS E-Notes — Pages 10–16; Assignment2_CC handwritten notes — Pages 1–2</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 10 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 11</div>
+  </div>
+
+<section class="q-block" id="a2q3">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.3 — Assignment 2</div>
+    <div class="qtext">Justify the statement, “SaaS integration is hard”.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p>The statement “SaaS integration is hard” is justified by several points from the SaaS study notes on integration challenges and related SaaS challenges:</p>
+
+<ol>
+<li><span class="pt">Different API standards and limitations:</span> Applications may use different standards such as REST and SOAP, with version mismatches and API depreciation issues.</li>
+<li><span class="pt">Real-time syncing issues:</span> Keeping data consistent across multiple apps in real time is difficult.</li>
+<li><span class="pt">Error handling and logging complexity:</span> Debugging and logging across platforms is challenging.</li>
+<li><span class="pt">Legacy / multi-tool environment:</span> Businesses use multiple SaaS and on-premise tools that do not automatically communicate; integrating with legacy systems can be technically complex and time-consuming.</li>
+<li><span class="pt">Frequent updates:</span> SaaS providers push automatic updates that may break integrations or custom workflows.</li>
+<li><span class="pt">Need for specialized solutions:</span> Integration often requires API knowledge or middleware/iPaaS platforms (e.g., MuleSoft, Zapier, Dell Boomi), which adds cost and technical expertise requirements.</li>
+</ol>
+
+<div class="ez-diag">
+  <div class="dtitle">Why SaaS Integration is Hard</div>
+  <div class="ez-row">
+    <div class="ez-box">SaaS App A</div>
+    <div class="ez-box">SaaS App B</div>
+    <div class="ez-box">Legacy System</div>
+  </div>
+  <div class="ez-row" style="margin:.35rem 0"><span class="ez-arr">Different APIs · Sync issues · Updates break links</span></div>
+  <div class="ez-row">
+    <div class="ez-box ez-soft">Need: API knowledge</div>
+    <div class="ez-box ez-soft">Middleware</div>
+    <div class="ez-box ez-soft">iPaaS</div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on SaaS E-Notes — Pages 12, 16, 17, 21</div>
+</div>
+
+<p><strong>Conclusion:</strong> Because of API differences, sync problems, error-handling complexity, legacy constraints and frequent vendor changes, SaaS integration is complex and time-consuming—hence the statement is justified.</p>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>Hard because of APIs, real-time sync, error handling, legacy systems, and frequent SaaS updates.</li><li>Often needs middleware or iPaaS, which itself adds complexity.</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>SaaS E-Notes — Pages 12, 16, 17, 21; Assignment2_CC handwritten notes — Page 2</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 11 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 12</div>
+  </div>
+
+<section class="q-block" id="a2q4">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.4 — Assignment 2</div>
+    <div class="qtext">Explain SaaS integration services.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p><strong>Why needed:</strong> Most businesses use multiple SaaS tools (CRM, ERP, HRM, etc.). These tools do not automatically communicate with each other. Integration services ensure consistent data flow, automated business processes, and elimination of data silos.</p>
+
+<h3 class="sec">Types of SaaS Integration Services</h3>
+<ol>
+<li><span class="pt">APIs (Application Programming Interfaces):</span> Allow applications to send/receive data from one another. REST and SOAP are common API standards. Most modern SaaS platforms offer open or partner APIs.</li>
+<li><span class="pt">Middleware / Integration Platforms:</span> Act as connectors between multiple SaaS apps. Examples: Zapier (no-code automation), MuleSoft (enterprise-grade), Dell Boomi, Workato, Informatica, Jitterbit.</li>
+<li><span class="pt">iPaaS (Integration Platform as a Service):</span> Cloud-based integration services that connect SaaS, on-premise and cloud apps; orchestrate complex workflows; and ensure real-time or scheduled syncing. Suitable for enterprise-level needs.</li>
+</ol>
+
+
+<div class="ez-diag">
+  <div class="dtitle">SaaS Integration Services</div>
+  <div class="ez-row">
+    <div class="ez-box">CRM</div>
+    <div class="ez-box">ERP</div>
+    <div class="ez-box">HRM</div>
+  </div>
+  <div class="ez-row" style="margin:.4rem 0"><span class="ez-arr">connected by</span></div>
+  <div class="ez-row">
+    <div class="ez-box ez-good">APIs</div>
+    <div class="ez-box ez-good">Middleware</div>
+    <div class="ez-box ez-good">iPaaS</div>
+  </div>
+  <div class="ez-row" style="margin-top:.4rem"><div class="ez-cloud">Consistent data flow · Automated processes · No silos</div></div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on SaaS E-Notes — Pages 17–20</div>
+</div>
+
+<h3 class="sec">Benefits</h3>
+<ul>
+<li>Centralized view of data across tools</li>
+<li>Improved workflow efficiency</li>
+<li>Reduced manual effort and human error</li>
+<li>Enables analytics/reporting by aggregating data sources</li>
+<li>Scalability as businesses add more applications</li>
+</ul>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>Integration services connect multiple SaaS tools that otherwise stay in silos.</li><li>Main approaches: APIs, Middleware, iPaaS.</li><li>Benefits: centralized data, automation, fewer errors, better analytics.</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>SaaS E-Notes — Pages 17–20; Assignment2_CC handwritten notes — Page 2</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 12 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 13</div>
+  </div>
+
+<section class="q-block" id="a2q5">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.5 — Assignment 2</div>
+    <div class="qtext">Explain SaaS Integration of Products and Platforms.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<h3 class="sec">A. SaaS Integration with Products</h3>
+<p>Different product categories integrate with related business systems as shown in the notes:</p>
+<table class="cmp">
+<thead><tr><th>Product Type</th><th>SaaS Example</th><th>Integrated With</th></tr></thead>
+<tbody>
+<tr><td>CRM</td><td>Salesforce</td><td>Marketing tools, ERP, email</td></tr>
+<tr><td>ERP</td><td>SAP, NetSuite</td><td>HRM, finance, logistics</td></tr>
+<tr><td>HRM</td><td>Workday, BambooHR</td><td>Payroll, ERP, recruitment tools</td></tr>
+<tr><td>Marketing</td><td>HubSpot, Marketo</td><td>CRM, analytics, email systems</td></tr>
+<tr><td>E-Commerce</td><td>Shopify, WooCommerce</td><td>Inventory, shipping, analytics</td></tr>
+</tbody>
+</table>
+<p><strong>Benefits of Product Integration:</strong> Centralized data consistency; improved customer experience; streamlined sales, HR, finance and marketing operations; real-time business intelligence.</p>
+<p><strong>Example workflow from notes:</strong> A lead is captured in HubSpot → synced to Salesforce CRM → creates a contact in Workday HRM (for recruitment) → automatically generates a report in Power BI.</p>
+
+<h3 class="sec">B. SaaS Integration with Platforms</h3>
+<table class="cmp">
+<thead><tr><th>Platform</th><th>Role</th></tr></thead>
+<tbody>
+<tr><td>AWS</td><td>Cloud hosting, serverless compute, AI</td></tr>
+<tr><td>Microsoft Azure</td><td>Enterprise cloud services, Active Directory</td></tr>
+<tr><td>Google Cloud</td><td>Big data tools, APIs, ML/AI</td></tr>
+<tr><td>Heroku</td><td>PaaS for deploying SaaS apps</td></tr>
+</tbody>
+</table>
+<p><strong>Integration use cases:</strong> Hosting SaaS products on AWS EC2 or Lambda; using Google Cloud APIs (e.g., Translation, ML); Azure Active Directory for SaaS identity management; CI/CD integration with GitHub, Jenkins, DockerHub.</p>
+
+
+<div class="ez-diag">
+  <div class="dtitle">Product + Platform Integration</div>
+  <div class="ez-grid2">
+    <div>
+      <div class="ez-box" style="width:100%;margin-bottom:.35rem">Products</div>
+      <div class="ez-box ez-soft" style="width:100%;margin-bottom:.25rem">CRM → Marketing / ERP</div>
+      <div class="ez-box ez-soft" style="width:100%;margin-bottom:.25rem">ERP → HRM / Finance</div>
+      <div class="ez-box ez-soft" style="width:100%">E-Commerce → Inventory</div>
+    </div>
+    <div>
+      <div class="ez-box" style="width:100%;margin-bottom:.35rem">Platforms</div>
+      <div class="ez-box ez-soft" style="width:100%;margin-bottom:.25rem">AWS — Hosting / AI</div>
+      <div class="ez-box ez-soft" style="width:100%;margin-bottom:.25rem">Azure — Identity (AD)</div>
+      <div class="ez-box ez-soft" style="width:100%">Heroku — Deploy SaaS</div>
+    </div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on SaaS E-Notes — Pages 22–24</div>
+</div>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>Product integration links CRM/ERP/HRM/Marketing/E-commerce tools.</li><li>Platform integration uses AWS, Azure, Google Cloud, Heroku.</li><li>Goal: consistent data, automation, hosting, identity and CI/CD.</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>SaaS E-Notes — Pages 22–24; Assignment2_CC handwritten notes — Pages 3–4</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 13 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 14</div>
+  </div>
+
+<section class="q-block" id="a3q1">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.1 — Assignment 3</div>
+    <div class="qtext">Explain IaaS in brief.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p><strong>Definition:</strong> Infrastructure as a Service (IaaS) is a cloud computing delivery model that provides virtualized computing resources over the Internet. Instead of purchasing and maintaining physical servers, storage and networking equipment, users rent these resources on-demand from cloud service providers.</p>
+<p>IaaS forms the foundational layer of cloud computing (alongside PaaS and SaaS) and offers flexibility, scalability and cost-effectiveness. In Unit-1 notes, IaaS is also known as Hardware as a Service (HaaS). The main advantage is that it helps users avoid the cost and complexity of purchasing and managing physical servers.</p>
+
+<h3 class="sec">Key Characteristics</h3>
+<ol>
+<li><span class="pt">On-demand self-service:</span> Users provision resources as needed without human intervention from the provider.</li>
+<li><span class="pt">Scalability:</span> Capacity can be increased or decreased dynamically.</li>
+<li><span class="pt">Pay-as-you-go pricing:</span> Customers pay only for resources they consume.</li>
+<li><span class="pt">Virtualization:</span> Resources are abstracted and delivered via virtual machines, containers and software-defined networks.</li>
+<li>Also listed in Unit-1: resources as a service; dynamic and flexible; GUI and API-based access; automated administrative tasks.</li>
+</ol>
+
+<p><strong>Examples:</strong> DigitalOcean, Linode, Amazon Web Services (AWS)/EC2, Microsoft Azure, Google Compute Engine (GCE), Rackspace, Cisco Metacloud.</p>
+
+
+<div class="ez-diag">
+  <div class="dtitle">IaaS Model</div>
+  <div class="ez-vs">
+    <div class="ez-box ez-bad">Buy Own Hardware<br><span class="ez-tiny">High cost &amp; maintenance</span></div>
+    <span class="ez-arr">&rArr;</span>
+    <div class="ez-box ez-good">Rent from CSP (IaaS)<br><span class="ez-tiny">VM · Storage · Network</span></div>
+  </div>
+  <div class="ez-row" style="margin-top:.5rem">
+    <div class="ez-box ez-soft">On-demand</div>
+    <div class="ez-box ez-soft">Scalable</div>
+    <div class="ez-box ez-soft">Pay-as-you-go</div>
+    <div class="ez-box ez-soft">Virtualized</div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-3 Notes — Pages 1–3 &amp; Unit-1 — Page 30</div>
+</div>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>IaaS = rent virtualized infrastructure over Internet (also called HaaS).</li><li>Foundational cloud layer with on-demand, scalable, pay-as-you-go resources.</li><li>Examples: AWS, Azure, GCE, Rackspace.</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-3 IaaS/PaaS Notes — Pages 1–3; Unit-1 E-Notes — Page 30; Assignment_16190 Assignment 3 question paper; CC_Assign3 handwritten notes — Page 1</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 14 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 15</div>
+  </div>
+
+<section class="q-block" id="a3q2">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.2 — Assignment 3</div>
+    <div class="qtext">Discuss Virtual Provisioning in Virtualized Data Centre.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p><strong>Meaning:</strong> Virtual Provisioning (VMP) is the capability to present a LUN to a computer system with extra capacity than what is physically allotted to the LUN on the storage array. Physical storage is allotted only when compute needs it, and provisioning decisions are not bound by presently accessible storage. Physical storage is allotted from a shared pool of physical capacity to the application “on-demand.” This gives more efficient storage utilization by minimizing allotted but unused physical storage.</p>
+<p>It can be implemented at the <strong>Computer layer</strong> and the <strong>Storage layer</strong>.</p>
+<p>Virtual provisioning is also described as a virtual storage network (VSAN)-based technology in which storage space is allocated on demand to devices. This allows virtualized environments to control allocation and management of physical disk storage connected with virtual machines (VMs). Virtual Machine Management Service (VMMS / vmms.exe) is the main module in Microsoft Windows that controls aspects of Hyper-V server virtualization.</p>
+
+<h3 class="sec">Need for Virtual Provisioning</h3>
+<ol>
+<li>Administrators typically allot storage based on anticipated growth to minimize later management overhead and application downtime.</li>
+<li>This causes over-provisioning, leading to greater costs, more power/cooling/floor-space needs, and lower capacity utilization.</li>
+<li>Virtual Provisioning addresses these challenges by more efficient utilization of storage.</li>
+</ol>
+
+<h3 class="sec">Advantages</h3>
+<ul>
+<li>Minimizes the operating and storage cost</li>
+<li>Decreases downtime</li>
+<li>Improves capacity utilization</li>
+<li>Minimizes administrative overhead</li>
+</ul>
+
+
+<div class="ez-diag">
+  <div class="dtitle">Traditional vs Virtual Provisioning</div>
+  <div class="ez-vs">
+    <div class="ez-box ez-bad">Traditional<br><span class="ez-tiny">Allot for future growth now → Over-provisioning → Waste</span></div>
+    <span class="ez-arr">vs</span>
+    <div class="ez-box ez-good">Virtual Provisioning<br><span class="ez-tiny">Larger LUN shown · Physical storage allotted on demand</span></div>
+  </div>
+  <div class="ez-row" style="margin-top:.5rem">
+    <div class="ez-cloud">Shared Storage Pool</div>
+    <span class="ez-arr">on-demand</span>
+    <div class="ez-box">Application / VM</div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-3 Notes — Pages 7–9</div>
+</div>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>Virtual provisioning = on-demand allocation from a shared storage pool (thin/over-presented LUN capacity).</li><li>Avoids over-provisioning cost, power, cooling and space waste.</li><li>Advantages: lower cost, less downtime, better utilization, less admin overhead.</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-3 IaaS/PaaS Notes — Pages 7–10; Assignment_16190 Assignment 3</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 15 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 16</div>
+  </div>
+
+<section class="q-block" id="a3q3">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.3 — Assignment 3</div>
+    <div class="qtext">Explain Virtual Machine Migration Services.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p><strong>Definition:</strong> Virtual machine migration is the task of moving a virtual machine from one physical hardware environment to another.</p>
+
+<h3 class="sec">Types of VM Migration</h3>
+<table class="cmp">
+<thead><tr><th>VM Migration Type</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>Cold Migration</td><td>Before migration, the virtual machine must be powered off. After the task, the old one should be deleted from the source host. The VM need not be on shared storage.</td></tr>
+<tr><td>Warm Migration</td><td>Whenever transferring OS and any application, there is no need to suspend the source host. It has high demand in public cloud.</td></tr>
+<tr><td>Live Migration</td><td>Process of moving a running virtual machine without stopping the OS and other applications from source host to destination host.</td></tr>
+</tbody>
+</table>
+
+
+<div class="ez-diag">
+  <div class="dtitle">VM Migration Types</div>
+  <div class="ez-row">
+    <div class="ez-box">Source Host</div>
+    <span class="ez-arr">VM moves</span>
+    <div class="ez-box">Destination Host</div>
+  </div>
+  <div class="ez-row" style="margin-top:.55rem">
+    <div class="ez-box ez-soft">Cold<br><span class="ez-tiny">Power off first</span></div>
+    <div class="ez-box ez-soft">Warm<br><span class="ez-tiny">No suspend source</span></div>
+    <div class="ez-box ez-good">Live<br><span class="ez-tiny">Running VM moves</span></div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-3 Notes — Page 11</div>
+</div>
+
+<h3 class="sec">Migration Techniques</h3>
+<p>Two important techniques are <strong>Pre-Copy Migration</strong> and <strong>Post-Copy Migration</strong>.</p>
+<p><strong>Pre-Copy:</strong> Hypervisor copies all memory pages from source to destination while the VM is running. It has Warm-up Phase and Stop-and-Copy Phase. Dirty pages are recopied in warm-up; finally CPUs are suspended during downtime for remaining transfer.</p>
+<p><strong>Post-Copy:</strong> VM at source is suspended first; CPU state/registers/non-pageable memory are transferred; remaining pages are sent (pre-paging). Page faults (network faults) at target are redirected to source.</p>
+
+<div class="diagram">
+  <img src="assets/diagrams/pre-copy.png" alt="Pre-Copy Migration Technique">
+  <div class="cap"><strong>Diagram Source:</strong> Unit-3 IaaS/PaaS Notes — Page 16 (Pre-Copy Migration Technique)</div>
+</div>
+<div class="diagram">
+  <img src="assets/diagrams/post-copy.png" alt="Post-Copy Migration Technique">
+  <div class="cap"><strong>Diagram Source:</strong> Unit-3 IaaS/PaaS Notes — Page 19 (Post-Copy Migration Technique)</div>
+</div>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>VM migration moves a VM between physical hosts.</li><li>Cold / Warm / Live migration types.</li><li>Techniques: Pre-copy (copy while running, then stop-and-copy) and Post-copy (suspend first, then transfer pages).</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-3 IaaS/PaaS Notes — Pages 11–19; Assignment_16190 Assignment 3; CC_Assign3 handwritten notes — Page 2</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 16 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 17</div>
+  </div>
+
+<section class="q-block" id="a3q4">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.4 — Assignment 3</div>
+    <div class="qtext">Discuss Integration of Public and Private Cloud.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p>Integrating public and private clouds creates a <strong>hybrid cloud</strong>.</p>
+<ul>
+<li><strong>Private cloud:</strong> Provides control, security, and customization for sensitive data and applications.</li>
+<li><strong>Public cloud:</strong> Offers scalability, elasticity, and access to on-demand resources for flexible workloads.</li>
+</ul>
+
+
+<div class="ez-diag">
+  <div class="dtitle">Integration of Public + Private = Hybrid</div>
+  <div class="ez-row">
+    <div class="ez-box ez-soft">Private Cloud<br><span class="ez-tiny">Control · Security · Sensitive data</span></div>
+    <span class="ez-arr">+</span>
+    <div class="ez-box ez-soft">Public Cloud<br><span class="ez-tiny">Scale · Elastic · On-demand</span></div>
+    <span class="ez-arr">=</span>
+    <div class="ez-cloud">Hybrid Cloud</div>
+  </div>
+  <div class="ez-row" style="margin-top:.5rem">
+    <div class="ez-box">Private (normal load)</div>
+    <span class="ez-arr">Cloud Bursting</span>
+    <div class="ez-box ez-good">Public (peak demand)</div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-3 Notes — Pages 20–22</div>
+</div>
+
+<h3 class="sec">Steps of Integration</h3>
+<ol>
+<li><span class="pt">Identify Workloads and Data:</span> Decide suitability for public or private cloud based on regulatory, security or performance considerations.</li>
+<li><span class="pt">Choose Integration Models:</span> e.g., Cloud Bursting — dynamically scale workloads from private to public cloud during peak demand.</li>
+<li><span class="pt">Implement Hybrid Cloud Management Platform (CMP):</span> Orchestrate and manage workloads across clouds from a unified interface. Examples: VMware Cloud Foundation, Red Hat OpenShift, Microsoft Azure Arc.</li>
+<li><span class="pt">Optimize Workload Placement:</span> Policies based on performance, cost, data sensitivity and compliance.</li>
+<li><span class="pt">Ensure Security and Compliance:</span> Consistent security policies, controls and encryption.</li>
+<li><span class="pt">Disaster Recovery and Business Continuity:</span> DR/BC strategy spanning both environments.</li>
+<li><span class="pt">Training and Documentation:</span> Train IT staff and users for hybrid operations.</li>
+</ol>
+
+<h3 class="sec">Challenges</h3>
+<ul>
+<li><strong>Complexity:</strong> Managing two separate environments adds complexity.</li>
+<li><strong>Security Considerations:</strong> Data transfer needs robust security for privacy and compliance.</li>
+<li><strong>Vendor Lock-in:</strong> Integration across providers can be challenging.</li>
+</ul>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>Public + Private integration = Hybrid cloud.</li><li>Key model: Cloud Bursting for peak demand.</li><li>Needs CMP, security consistency, DR/BC, and staff training.</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-3 IaaS/PaaS Notes — Pages 20–24; Unit-1 E-Notes — Pages 13–15; Assignment_16190 Assignment 3</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 17 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 18</div>
+  </div>
+
+<section class="q-block" id="a3q5">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Q.5 — Assignment 3</div>
+    <div class="qtext">Explain any three Tools and Technology used in Cloud Computing.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p>Unit-3 notes list important technologies and tools for cloud computing. Any three are explained below.</p>
+
+<h3 class="sec">1. Virtualization</h3>
+<p>Virtualization technology uses specialized programming techniques to create a virtual version of a computer resource. This allows cloud service providers to bring multiple operating systems and computer systems under one virtual machine to efficiently distribute an application among multiple users within one organization or numerous organizations in a cost-efficient and convenient manner. It offers unparalleled hardware flexibility and significantly brings down IT maintenance and infrastructure costs. It is the first entry on the cloud computing technologies list in the notes.</p>
+
+<h3 class="sec">2. Service-Oriented Architecture (SOA)</h3>
+<p>SOA refers to an online architecture that supports a collection of services. There is an established communication protocol between components of various applications or services, and this communication occurs over a network to provide the user with certain services.</p>
+
+<h3 class="sec">3. Grid Computing</h3>
+<p>Grid computing allows multiple computer resources to combine and interact to achieve a common objective. It is particularly beneficial when large-scale computing tasks are too burdensome for one individual computing resource. Such a job is broken into smaller components and distributed among the grid. The computing resources communicate and work together to solve the problem.</p>
+
+<p><em>Additional technology from the same notes (for revision):</em> <strong>Utility Computing</strong> — a software service provision business model with pay-per-use; users subscribe and pay only for preferred services without massive initial expenditure.</p>
+
+
+<div class="ez-diag">
+  <div class="dtitle">Three Cloud Technologies</div>
+  <div class="ez-row">
+    <div class="ez-box ez-good">1. Virtualization<br><span class="ez-tiny">Many OS on one machine</span></div>
+    <div class="ez-box ez-good">2. SOA<br><span class="ez-tiny">Services communicate on network</span></div>
+    <div class="ez-box ez-good">3. Grid Computing<br><span class="ez-tiny">Big job split across machines</span></div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-3 Notes — Pages 25–27</div>
+</div>
+
+<div class="remember"><strong>Important Points to Remember</strong><ul><li>Three core technologies in notes: Virtualization, SOA, Grid Computing (also Utility Computing).</li><li>Virtualization enables multi-OS sharing and lower infrastructure cost.</li><li>Grid splits large jobs across many resources.</li></ul></div>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-3 IaaS/PaaS Notes — Pages 25–28; Assignment_16190 Assignment 3</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 18 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 19</div>
+  </div>
+
+<h2 style="color:var(--navy);text-align:center;border-bottom:2px solid var(--navy);padding-bottom:.4rem">Additional Important Exam Questions</h2>
+<p style="text-align:center;color:#4a5568;font-family:'Segoe UI',sans-serif;font-size:.9rem">Prepared only from Unit-1, SaaS, and IaaS/PaaS E-Notes</p>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 19 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 20</div>
+  </div>
+
+<section class="q-block" id="addq1">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Additional Q.1</div>
+    <div class="qtext">Differentiate between Public Cloud and Private Cloud.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<table class="cmp">
+<thead><tr><th>Basis</th><th>Public Cloud</th><th>Private Cloud</th></tr></thead>
+<tbody>
+<tr><td>Meaning</td><td>Open to all via Internet using pay-per-usage; managed by CSP</td><td>Internal/corporate cloud built and managed by organization or third party</td></tr>
+<tr><td>Access</td><td>General public; no limit on number of users</td><td>Accessible within the organization; limited area of operations</td></tr>
+<tr><td>Security</td><td>Less secure; resources shared publicly</td><td>High level of security and privacy</td></tr>
+<tr><td>Control</td><td>Client has no control of data</td><td>Organization has full control</td></tr>
+<tr><td>Cost / Maintenance</td><td>Lower cost; CSP maintains</td><td>Needs skilled people and infrastructure</td></tr>
+<tr><td>Examples / Tools</td><td>Amazon EC2, Google App Engine, Windows Azure</td><td>OpenStack, Eucalyptus</td></tr>
+</tbody>
+</table>
+
+<div class="ez-diag">
+  <div class="dtitle">Public vs Private — Quick Picture</div>
+  <div class="ez-vs">
+    <div class="ez-box ez-soft">Public Cloud<br><span class="ez-tiny">Open to all · CSP managed · Pay-per-use · Less secure</span></div>
+    <span class="ez-arr">vs</span>
+    <div class="ez-box ez-good">Private Cloud<br><span class="ez-tiny">Internal · Full control · High security · Skilled staff needed</span></div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-1 E-Notes — Pages 7–12</div>
+</div>
+
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-1 E-Notes — Pages 7–12</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 20 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 21</div>
+  </div>
+
+<section class="q-block" id="addq2">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Additional Q.2</div>
+    <div class="qtext">Explain Hybrid Cloud with its advantages and disadvantages.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p>Hybrid Cloud is a combination of the public cloud and the private cloud: <strong>Hybrid Cloud = Public Cloud + Private Cloud</strong>. It is partially secure because public-cloud services can be accessed by anyone, while private-cloud services can be accessed only by the organization’s users.</p>
+
+<div class="ez-diag">
+  <div class="dtitle">Hybrid Cloud Formula</div>
+  <div class="ez-row">
+    <div class="ez-cloud">Public Cloud</div>
+    <span class="ez-arr">+</span>
+    <div class="ez-box">Private Cloud</div>
+    <span class="ez-arr">=</span>
+    <div class="ez-box ez-good">Hybrid Cloud</div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-1 E-Notes — Page 13</div>
+</div>
+
+<p><strong>Examples:</strong> Google Application Suite (Gmail, Google Apps, Google Drive), Office 365, Amazon Web Services.</p>
+<h3 class="sec">Advantages</h3>
+<ol>
+<li>Suitable for organizations needing more security than public cloud</li>
+<li>Helps deliver new products and services more quickly</li>
+<li>Excellent way to reduce risk</li>
+<li>Flexible resources (public) + secure resources (private)</li>
+</ol>
+<h3 class="sec">Disadvantages</h3>
+<ol>
+<li>Security not as good as private cloud</li>
+<li>Managing hybrid cloud is complex</li>
+<li>Reliability depends on cloud service providers</li>
+</ol>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-1 E-Notes — Pages 13–15</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 21 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 22</div>
+  </div>
+
+<section class="q-block" id="addq3">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Additional Q.3</div>
+    <div class="qtext">Explain Community Cloud.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p>Community cloud allows systems and services to be accessible by a group of several organizations to share information between the organization and a specific community. It is owned, managed and operated by one or more organizations in the community, a third party, or a combination of them.</p>
+<div class="ez-diag">
+  <div class="dtitle">Community Cloud</div>
+  <div class="ez-row">
+    <div class="ez-box">Org A</div>
+    <div class="ez-box">Org B</div>
+    <div class="ez-box">Org C</div>
+  </div>
+  <div class="ez-row" style="margin:.35rem 0"><span class="ez-arr">share</span></div>
+  <div class="ez-row"><div class="ez-cloud">Community Cloud<br><span class="ez-tiny">e.g. Health Care community</span></div></div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-1 E-Notes — Pages 16–17</div>
+</div>
+<p><strong>Example:</strong> Health Care community cloud.</p>
+<p><strong>Advantages:</strong> Cost-effective sharing; collaborative with more security than public cloud; distributive environment; share resources/infrastructure/capabilities.</p>
+<p><strong>Disadvantages:</strong> Not good for every organization; security not as good as private cloud; not suitable without collaboration; fixed storage and bandwidth shared among members.</p>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-1 E-Notes — Pages 16–18</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 22 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 23</div>
+  </div>
+
+<section class="q-block" id="addq4">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Additional Q.4</div>
+    <div class="qtext">Differentiate between IaaS, PaaS and SaaS.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+
+<div class="ez-diag">
+  <div class="dtitle">Service Model Pyramid</div>
+  <div class="svc-stack" style="margin:.2rem auto">
+    <div class="layer saas">SaaS — Use software</div>
+    <div class="layer paas">PaaS — Build apps</div>
+    <div class="layer iaas">IaaS — Rent infrastructure</div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-1 E-Notes — Pages 30–32</div>
+</div>
+
+<table class="cmp">
+<thead><tr><th>Basis</th><th>IaaS</th><th>PaaS</th><th>SaaS</th></tr></thead>
+<tbody>
+<tr><td>Meaning</td><td>Hardware/Infrastructure as a Service over Internet</td><td>Platform for develop, test, run, manage apps</td><td>On-demand software hosted by CSP</td></tr>
+<tr><td>User focus</td><td>Rent VMs, storage, networking</td><td>Programmers/developers</td><td>End users via browser</td></tr>
+<tr><td>Management</td><td>Avoid buying/managing physical servers</td><td>Provider manages platform/runtime; builds on virtualization</td><td>Provider manages app, updates automatically</td></tr>
+<tr><td>Key traits</td><td>Scalable, dynamic, GUI/API access</td><td>Multi-language, auto-scale, web/DB integration</td><td>Central management, pay-as-per-use</td></tr>
+<tr><td>Examples</td><td>AWS, Azure, GCE, Rackspace</td><td>Heroku, Google App Engine, OpenShift</td><td>Salesforce, Google Apps, Dropbox, Slack</td></tr>
+</tbody>
+</table>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-1 E-Notes — Pages 30–32; Unit-3 Notes — Pages 1–3</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 23 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 24</div>
+  </div>
+
+<section class="q-block" id="addq5">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Additional Q.5</div>
+    <div class="qtext">Explain Platform as a Service (PaaS).</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p>PaaS cloud computing platform is created for the programmer to develop, test, run, and manage the applications. It builds on virtualization technology so resources can easily be scaled up or down as per the organization’s need, and provides an ability to “Auto-scale.”</p>
+
+<div class="ez-diag">
+  <div class="dtitle">PaaS for Developers</div>
+  <div class="ez-row">
+    <div class="ez-box">Programmer</div>
+    <span class="ez-arr">&rarr;</span>
+    <div class="ez-cloud">PaaS Platform<br><span class="ez-tiny">Develop · Test · Run · Manage</span></div>
+    <span class="ez-arr">&rarr;</span>
+    <div class="ez-box ez-good">Application</div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-1 E-Notes — Page 31</div>
+</div>
+
+<h3 class="sec">Characteristics</h3>
+<ol>
+<li>Accessible to various users via the same development application</li>
+<li>Integrates with web services and databases</li>
+<li>Builds on virtualization technology</li>
+<li>Supports multiple languages and frameworks</li>
+<li>Provides auto-scale ability</li>
+</ol>
+<p><strong>Examples:</strong> AWS Elastic Beanstalk, Windows Azure, Heroku, Force.com, Google App Engine, Apache Stratos, Magento Commerce Cloud, OpenShift.</p>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-1 E-Notes — Page 31</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 24 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 25</div>
+  </div>
+
+<section class="q-block" id="addq6">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Additional Q.6</div>
+    <div class="qtext">Explain Pre-Copy Migration and Post-Copy Migration.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<h3 class="sec">Pre-Copy Migration</h3>
+<p>The hypervisor copies all memory pages from source to destination while the VM is running. Phases:</p>
+<ol>
+<li><strong>Warm-up Phase:</strong> While copying, some pages change (dirty pages) because source CPU is active; dirty pages must be recopied.</li>
+<li><strong>Stop &amp; Copy Phase:</strong> Warm-up repeats until dirty pages are recopied; source CPU is deactivated; both CPUs suspended during downtime while remaining pages transfer.</li>
+</ol>
+<div class="diagram">
+  <img src="assets/diagrams/pre-copy.png" alt="Pre-Copy">
+  <div class="cap"><strong>Diagram Source:</strong> Unit-3 Notes — Page 16</div>
+</div>
+
+<h3 class="sec">Post-Copy Migration</h3>
+<p>VM at source is suspended to start post-copy migration. Execution state (CPU state, registers, non-pageable memory) is transferred to the target. Remaining memory pages are sent in parallel (pre-paging). If the target accesses a not-yet-transferred page, a page/network fault occurs and is redirected to the source. Pre-paging pushes pages after the last fault to reduce faults.</p>
+<div class="diagram">
+  <img src="assets/diagrams/post-copy.png" alt="Post-Copy">
+  <div class="cap"><strong>Diagram Source:</strong> Unit-3 Notes — Page 19</div>
+</div>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-3 IaaS/PaaS Notes — Pages 12–19</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 25 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 26</div>
+  </div>
+
+<section class="q-block" id="addq7">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Additional Q.7</div>
+    <div class="qtext">Explain Resource Provisioning and its methods.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p><strong>Resource Provisioning</strong> means the selection, deployment, and run-time management of software (e.g., database server management systems, load balancers) and hardware resources (e.g., CPU, storage, and network) for ensuring guaranteed performance for applications.</p>
+
+<div class="ez-diag">
+  <div class="dtitle">Resource Provisioning Methods</div>
+  <div class="ez-row">
+    <div class="ez-box ez-soft">Static<br><span class="ez-tiny">Fixed / advance / flat fee</span></div>
+    <div class="ez-box ez-good">Dynamic<br><span class="ez-tiny">Add/remove as demand changes</span></div>
+    <div class="ez-box ez-soft">User-Self<br><span class="ez-tiny">Buy from web + account</span></div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-3 Notes — Pages 29–30</div>
+</div>
+
+<h3 class="sec">Methods</h3>
+<ol>
+<li><span class="pt">Static Provisioning:</span> Predictable and unchanging demands; advance preparation of resources; charges as flat fee or monthly basis.</li>
+<li><span class="pt">Dynamic Provisioning:</span> Demand may change or vary; allocate more resources when needed and remove when not in use.</li>
+<li><span class="pt">User-Self Provisioning:</span> Resources are purchased from the web; create user account.</li>
+</ol>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-3 IaaS/PaaS Notes — Pages 29–30</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 26 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 27</div>
+  </div>
+
+<section class="q-block" id="addq8">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Additional Q.8</div>
+    <div class="qtext">Write a short note on Cloud Infrastructure and its management.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p><strong>Cloud infrastructure</strong> consists of all hardware and software elements needed for cloud computing, including: Compute (server), Networking, Storage, and Virtualization resources.</p>
+<div class="ez-diag">
+  <div class="dtitle">Cloud Infrastructure Building Blocks</div>
+  <div class="ez-row">
+    <div class="ez-box">Compute<br><span class="ez-tiny">(Server)</span></div>
+    <div class="ez-box">Networking</div>
+    <div class="ez-box">Storage</div>
+    <div class="ez-box">Virtualization</div>
+  </div>
+  <div class="ez-row" style="margin-top:.45rem"><div class="ez-cloud">Managed via UI / Dashboard</div></div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-1 E-Notes — Pages 19–20</div>
+</div>
+<p><strong>Cloud infrastructure management</strong> comprises the processes and tools needed to effectively allocate and deliver key resources when and where they are required. The UI/dashboard is a control panel for provisioning, configuring and managing cloud infrastructure.</p>
+<p>It is useful in delivering cloud services to:</p>
+<ul>
+<li>Internal users (developers or other roles that consume cloud resources)</li>
+<li>External users (customers and business partners)</li>
+</ul>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-1 E-Notes — Pages 19–20</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 27 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 28</div>
+  </div>
+
+<section class="q-block" id="addq9">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Additional Q.9</div>
+    <div class="qtext">Explain the Characteristics of SaaS.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<p>From the SaaS E-Notes, important characteristics are:</p>
+<div class="ez-diag">
+  <div class="dtitle">SaaS Characteristics</div>
+  <div class="ez-grid4">
+    <div class="ez-box ez-soft">Multi-tenancy</div>
+    <div class="ez-box ez-soft">Subscription scale</div>
+    <div class="ez-box ez-soft">Auto updates</div>
+    <div class="ez-box ez-soft">Anywhere access</div>
+    <div class="ez-box ez-soft">Security &amp; SLAs</div>
+    <div class="ez-box ez-soft">Central management</div>
+    <div class="ez-box ez-soft">Remote hosting</div>
+    <div class="ez-box ez-soft">Pay-as-per-use</div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on SaaS E-Notes — Page 3 &amp; Unit-1 — Page 32</div>
+</div>
+<ol>
+<li><span class="pt">Multi-tenancy model:</span> Single instance serves multiple users.</li>
+<li><span class="pt">Scalable usage</span> based on subscription model.</li>
+<li><span class="pt">Automatic updates</span> and patch management.</li>
+<li><span class="pt">Accessible from anywhere</span> with Internet connectivity.</li>
+<li><span class="pt">Security, compliance, and SLAs.</span></li>
+</ol>
+<p>Unit-1 also lists: managed from a central location; hosted on a remote server; accessible over the Internet; users not responsible for hardware/software updates; pay-as-per-use purchase.</p>
+<div class="source"><strong>Source from Provided Material</strong><br>SaaS E-Notes — Page 3; Unit-1 E-Notes — Page 32</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 28 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 29</div>
+  </div>
+
+<section class="q-block" id="addq10">
+  <div class="q-head">
+    <span class="marks">Marks: 5</span>
+    <div class="qno">Additional Q.10</div>
+    <div class="qtext">Explain Utility Computing and Grid Computing as cloud technologies.</div>
+  </div>
+  <div class="ans-label">Answer</div>
+  
+<h3 class="sec">Grid Computing</h3>
+<p>Grid computing allows multiple computer resources to combine and interact to achieve a common objective. It is beneficial for large-scale tasks too burdensome for one resource. The job is broken into smaller components and distributed among the grid; resources communicate and work together to solve the problem.</p>
+
+<div class="ez-diag">
+  <div class="dtitle">Grid Computing Idea</div>
+  <div class="ez-row">
+    <div class="ez-box ez-bad">Huge Job</div>
+    <span class="ez-arr">split</span>
+    <div class="ez-box">PC 1</div>
+    <div class="ez-box">PC 2</div>
+    <div class="ez-box">PC 3</div>
+    <span class="ez-arr">&rarr;</span>
+    <div class="ez-box ez-good">Result</div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-3 Notes — Page 27</div>
+</div>
+
+<h3 class="sec">Utility Computing</h3>
+<div class="ez-diag">
+  <div class="dtitle">Utility Computing (Pay-per-use)</div>
+  <div class="ez-row">
+    <div class="ez-box">User Subscribes</div>
+    <span class="ez-arr">&rarr;</span>
+    <div class="ez-cloud">Cloud Service</div>
+    <span class="ez-arr">&rarr;</span>
+    <div class="ez-box ez-good">Pay only for use<br><span class="ez-tiny">No huge initial cost</span></div>
+  </div>
+  <div class="cap"><strong>Diagram Source:</strong> Based on Unit-3 Notes — Page 28</div>
+</div>
+<p>Utility computing is an enabling technology for cloud computing. It is a software service provision business model that employs a pay-per-use model. Users subscribe to preferred services and pay only for those services without a massive initial expenditure. This offers flexibility to change or discontinue usage of a cloud service.</p>
+<div class="source"><strong>Source from Provided Material</strong><br>Unit-3 IaaS/PaaS Notes — Pages 27–28</div>
+
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 29 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 30</div>
+  </div>
+
+<section id="revision">
+<h2 style="color:var(--navy);text-align:center">Quick Revision — Important Definitions</h2>
+<ol>
+<li><strong>Cloud Computing:</strong> Storing and accessing data and computing services over the Internet; on-demand servers, networking, databases, storage. <em>(Unit-1 p.3)</em></li>
+<li><strong>Distributed Computing (pre-requisite):</strong> Multiple software components on multiple computers running as a single system. <em>(Unit-1 p.2)</em></li>
+<li><strong>Virtualization:</strong> Creation of a virtual version of a server, desktop, storage, OS or network resource; share one physical instance among many. <em>(Unit-1 p.23)</em></li>
+<li><strong>Public / Private / Hybrid / Community Cloud:</strong> Four deployment models. <em>(Unit-1 p.6–18)</em></li>
+<li><strong>IaaS / PaaS / SaaS:</strong> Three service layers/models. <em>(Unit-1 p.29–32)</em></li>
+<li><strong>SaaS:</strong> Software distribution model; apps hosted by provider; browser access. <em>(SaaS notes p.2)</em></li>
+<li><strong>Virtual Provisioning:</strong> Present LUN with more capacity than physically allotted; allocate from shared pool on demand. <em>(Unit-3 p.7)</em></li>
+<li><strong>VM Migration:</strong> Moving a VM from one physical hardware environment to another. <em>(Unit-3 p.11)</em></li>
+<li><strong>Resource Provisioning:</strong> Selection, deployment and run-time management of software/hardware for guaranteed performance. <em>(Unit-3 p.29)</em></li>
+<li><strong>iPaaS:</strong> Cloud-based integration for connecting SaaS/on-premise/cloud apps and orchestrating workflows. <em>(SaaS notes p.19)</em></li>
+</ol>
+<div class="source"><strong>Source from Provided Material</strong><br>Compiled from Unit-1, SaaS, and Unit-3 E-Notes as cited above</div>
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 30 of 31</span>
+  </div>
+</article>
+
+<article class="a4">
+  <div class="page-header">
+    <div><strong>Cloud Computing — Exam Preparation Notes</strong>Subject: Cloud Computing | Prepared from Provided Study Material Only</div>
+    <div>Study Notes · Sheet 31</div>
+  </div>
+
+<section id="diagrams">
+<h2 style="color:var(--navy);text-align:center">Important Diagrams (from Study Material)</h2>
+<div class="diagram">
+  <img src="assets/diagrams/types-of-cloud.png" alt="Types of Cloud">
+  <div class="cap"><strong>Diagram Source:</strong> Unit-1 E-Notes — Page 6</div>
+</div>
+<div class="diagram">
+  <img src="assets/diagrams/challenges.png" alt="Challenges">
+  <div class="cap"><strong>Diagram Source:</strong> Unit-1 E-Notes — Page 21</div>
+</div>
+<div class="diagram">
+  <img src="assets/diagrams/applications.png" alt="Applications">
+  <div class="cap"><strong>Diagram Source:</strong> Unit-1 E-Notes — Page 22</div>
+</div>
+<div class="diagram">
+  <img src="assets/diagrams/pre-copy.png" alt="Pre-Copy">
+  <div class="cap"><strong>Diagram Source:</strong> Unit-3 Notes — Page 16</div>
+</div>
+<div class="diagram">
+  <img src="assets/diagrams/post-copy.png" alt="Post-Copy">
+  <div class="cap"><strong>Diagram Source:</strong> Unit-3 Notes — Page 19</div>
+</div>
+</section>
+
+  <div class="page-footer">
+    <span>Prepared from Provided Study Material Only</span>
+    <span>Page 31 of 31</span>
+  </div>
+</article>
+
+</main>
+<script>
+(function(){
+  const qBlocks=[...document.querySelectorAll('.q-block')];
+  let idx=0;
+  const body=document.body;
+  const sideNav=document.getElementById('sideNav');
+  const backdrop=document.getElementById('navBackdrop');
+  const btnOpen=document.getElementById('navOpen');
+  const btnClose=document.getElementById('navClose');
+
+  function openNav(){
+    body.classList.add('nav-open');
+    backdrop.hidden=false;
+    sideNav.setAttribute('aria-hidden','false');
+    btnOpen.setAttribute('aria-expanded','true');
+  }
+  function closeNav(){
+    body.classList.remove('nav-open');
+    backdrop.hidden=true;
+    sideNav.setAttribute('aria-hidden','true');
+    btnOpen.setAttribute('aria-expanded','false');
+  }
+  function go(i){
+    if(!qBlocks.length)return;
+    idx=(i+qBlocks.length)%qBlocks.length;
+    qBlocks[idx].scrollIntoView({behavior:'smooth',block:'start'});
+    closeNav();
+  }
+
+  btnOpen.setAttribute('aria-expanded','false');
+  btnOpen.onclick=openNav;
+  btnClose.onclick=closeNav;
+  backdrop.onclick=closeNav;
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape')closeNav();
+  });
+  sideNav.querySelectorAll('a.nav-link').forEach(a=>{
+    a.addEventListener('click',()=>closeNav());
+  });
+
+  const prev=document.getElementById('btnPrev');
+  const next=document.getElementById('btnNext');
+  if(prev)prev.onclick=()=>go(idx-1);
+  if(next)next.onclick=()=>go(idx+1);
+  document.getElementById('btnTop').onclick=()=>{
+    document.getElementById('top').scrollIntoView({behavior:'smooth'});
+    closeNav();
+  };
+  document.getElementById('btnPrint').onclick=()=>{closeNav();window.print();};
+  document.getElementById('btnDl').onclick=async()=>{
+    try{
+      const res=await fetch(location.href.split('#')[0]);
+      const blob=await res.blob();
+      const a=document.createElement('a');
+      a.href=URL.createObjectURL(blob);
+      a.download='Cloud_Computing_Exam_QA.html';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }catch(e){alert('Open this file from disk, or use Print → Save as PDF.');}
+    closeNav();
+  };
+  const search=document.getElementById('searchBox');
+  search.addEventListener('input',()=>{
+    const term=search.value.trim().toLowerCase();
+    document.querySelectorAll('.hl').forEach(n=>{
+      const p=n.parentNode; while(n.firstChild)p.insertBefore(n.firstChild,n); p.removeChild(n);
+    });
+    if(!term){qBlocks.forEach(q=>q.style.outline='');return;}
+    let first=null;
+    qBlocks.forEach(q=>{
+      const t=q.innerText.toLowerCase();
+      if(t.includes(term)){
+        q.style.outline='2px solid #d69e2e';
+        if(!first)first=q;
+      } else q.style.outline='';
+    });
+    if(first){
+      first.scrollIntoView({behavior:'smooth',block:'start'});
+      closeNav();
+    }
+  });
+})();
+</script>
+</body>
+</html>

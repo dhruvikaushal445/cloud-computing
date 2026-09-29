@@ -1,0 +1,379 @@
+=== FILE: E-Notes_16196_Content_Document_20260824103911303AM_copy.pdf ===
+=== PAGES: 33 ===
+
+----- PAGE 1 -----
+UNIT:-1 
+INTRODUCTION TO CLOUD 
+COMPUTING
+By: Prof. Niral Jadav
+
+
+----- PAGE 2 -----
+PRE-REQUISITE : FUNDAMENTALS OF DISTRIBUTED 
+COMPUTING 
+ A distributed computer system consists of multiple software 
+components that are on multiple computers, but run as a 
+single system. 
+ The computers that are in a distributed system can be 
+physically close together and connected by a local network, 
+or they can be geographically distant and connected by a 
+wide area network.
+ A distributed system can consist of any number of possible 
+configurations, such as mainframes, personal computers, 
+workstations, minicomputers, and so on.
+ The goal of distributed computing is to make such a network 
+work as a single computer.
+
+
+----- PAGE 3 -----
+CLOUD COMPUTING
+ Cloud Computing is defined as storing and accessing data and 
+computing services over the Internet.
+ It is the on-demand availability of computer services like servers, 
+networking, databases, data storage, etc.
+ The main goal of cloud computing is to give data centers access 
+to many users for accessing data from remote servers.
+
+
+----- PAGE 4 -----
+ADVANTAGES
+ Back-up and restore data
+ Improved collaboration
+ Excellent accessibility
+ Low maintenance cost
+ Mobility
+ Unlimited storage capacity
+ Data security
+
+
+----- PAGE 5 -----
+DISADVANTAGES
+ Internet Connectivity
+ Vendor lock-in
+ Limited Control
+ Security
+
+
+----- PAGE 6 -----
+[NO TEXT / LIKELY IMAGE-ONLY PAGE]
+
+----- PAGE 7 -----
+PUBLIC CLOUD
+ Public cloud is open to all to store and access information via 
+the Internet using the pay-per-usage method.
+ In public cloud, computing resources are managed and 
+operated by the Cloud Service Provider (CSP).
+ Example: Amazon elastic compute cloud (EC2), IBM 
+SmartCloud Enterprise, Microsoft, Google App Engine, 
+Windows Azure Services Platform
+
+
+----- PAGE 8 -----
+ADVANTAGES OF PUBLIC CLOUD
+ Public cloud is owned at a lower cost than the private and 
+hybrid cloud.
+ Public cloud is maintained by the cloud service provider, so 
+do not need to worry about the maintenance.
+ Public cloud is easier to integrate. Hence it offers a better 
+flexibility approach to consumers.
+ Public cloud is location independent because its services are 
+delivered through the internet.
+ Public cloud is highly scalable as per the requirement of 
+computing resources.
+ It is accessible by the general public, so there is no limit to the 
+number of users.
+
+
+----- PAGE 9 -----
+DISADVANTAGES OF PUBLIC CLOUD
+ Public Cloud is less secure because resources are shared 
+publicly.
+ Performance depends upon the high-speed internet network 
+link to the cloud provider.
+ The Client has no control of data.
+
+
+----- PAGE 10 -----
+PRIVATE CLOUD
+ Private cloud is also known as an internal cloud or corporate 
+cloud.
+ It is used by organizations to build and manage their own 
+data centers internally or by the third party.
+ It can be deployed using Opensource tools such as Openstack 
+and Eucalyptus.
+
+
+----- PAGE 11 -----
+ADVANTAGES OF PRIVATE CLOUD
+ Private cloud provides a high level of security and privacy to 
+the users.
+ Private cloud offers better performance with improved speed 
+and space capacity.
+ It allows the IT team to quickly allocate and deliver 
+on-demand IT resources.
+ The organization has full control over the cloud because it is 
+managed by the organization itself. So, there is no need for 
+the organization to depends on anybody.
+ It is suitable for organizations that require a separate cloud 
+for their personal use and data security is the first priority.
+
+
+----- PAGE 12 -----
+DISADVANTAGES OF PRIVATE CLOUD
+ Skilled people are required to manage and operate cloud 
+services.
+ Private cloud is accessible within the organization, so the area 
+of operations is limited.
+ Private cloud is not suitable for organizations that have a high 
+user base, and organizations that do not have the prebuilt 
+infrastructure, sufficient manpower to maintain and manage 
+the cloud.
+
+
+----- PAGE 13 -----
+HYBRID CLOUD
+ Hybrid Cloud is a combination of the public cloud and the 
+private cloud. we can say:
+ Hybrid Cloud = Public Cloud + Private Cloud
+ Hybrid cloud is partially secure because the services which 
+are running on the public cloud can be accessed by anyone, 
+while the services which are running on a private cloud can 
+be accessed only by the organization's users.
+ Example: Google Application Suite (Gmail, Google Apps, and 
+Google Drive), Office 365 (MS Office on the Web and One 
+Drive), Amazon Web Services.
+
+
+----- PAGE 14 -----
+ADVANTAGES OF HYBRID CLOUD
+ Hybrid cloud is suitable for organizations that require more 
+security than the public cloud.
+ Hybrid cloud helps you to deliver new products and services 
+more quickly.
+ Hybrid cloud provides an excellent way to reduce the risk.
+ Hybrid cloud offers flexible resources because of the public 
+cloud and secure resources because of the private cloud.
+
+
+----- PAGE 15 -----
+DISADVANTAGES OF HYBRID CLOUD
+ In Hybrid Cloud, security feature is not as good as the private 
+cloud.
+ Managing a hybrid cloud is complex because it is difficult to 
+manage more than one type of deployment model.
+ In the hybrid cloud, the reliability of the services depends on 
+cloud service providers.
+
+
+----- PAGE 16 -----
+COMMUNITY CLOUD
+ Community cloud allows systems and services to be 
+accessible by a group of several organizations to share the 
+information between the organization and a specific 
+community. 
+ It is owned, managed, and operated by one or more 
+organizations in the community, a third party, or a 
+combination of them.
+ Example: Health Care community cloud
+
+
+----- PAGE 17 -----
+ADVANTAGES OF COMMUNITY CLOUD
+ Community cloud is cost-effective because the whole cloud is 
+being shared by several organizations or communities.
+ Community cloud is suitable for organizations that want to 
+have a collaborative cloud with more security features than 
+the public cloud.
+ It provides better security than the public cloud.
+ It provides collaborative and distributive environment.
+ Community cloud allows us to share cloud resources, 
+infrastructure, 
+and 
+other 
+capabilities 
+among 
+various 
+organizations.
+
+
+----- PAGE 18 -----
+DISADVANTAGES OF COMMUNITY CLOUD
+ Community cloud is not a good choice for every organization.
+ Security features are not as good as the private cloud.
+ It is not suitable if there is no collaboration.
+ The fixed amount of data storage and bandwidth is shared 
+among all community members.
+
+
+----- PAGE 19 -----
+CLOUD INFRASTRUCTURE
+Cloud infrastructure consists of all of the hardware and 
+software elements needed for cloud computing, including:  
+ Compute (server) 
+ Networking 
+ Storage 
+ Virtualization resources 
+
+
+----- PAGE 20 -----
+CLOUD INFRASTRUCTURE MANAGEMENT
+ Cloud infrastructure management comprises the processes and 
+tools needed to effectively allocate and deliver key resources when 
+and where they are required. 
+ The UI, or dashboard, is a good example of such a tool; it acts as a 
+control panel for provisioning, configuring and managing cloud 
+infrastructure.
+ 
+Cloud infrastructure management is useful in delivering cloud 
+services to both: 
+ Internal users, such as developers or any other roles that consume 
+cloud resources. 
+ External users, such as customers and business partners.
+
+
+----- PAGE 21 -----
+[NO TEXT / LIKELY IMAGE-ONLY PAGE]
+
+----- PAGE 22 -----
+[NO TEXT / LIKELY IMAGE-ONLY PAGE]
+
+----- PAGE 23 -----
+VIRTUALIZATION IN CLOUD COMPUTING
+ Virtualization is the "creation of a virtual (rather than actual) 
+version of something, such as a server, a desktop, a storage 
+device, an operating system or network resources".
+ In other words, Virtualization is a technique, which allows to 
+share a single physical instance of a resource or an 
+application among multiple customers and organizations. 
+ It does by assigning a logical name to a physical storage and 
+providing a pointer to that physical resource when 
+demanded.
+
+
+----- PAGE 24 -----
+TYPES OF VIRTUALIZATION
+ Hardware Virtualization.
+ Operating system Virtualization.
+ Server Virtualization.
+ Storage Virtualization.
+
+
+----- PAGE 25 -----
+HARDWARE VIRTUALIZATION
+ When 
+the 
+virtual 
+machine 
+software 
+or 
+virtual 
+machine 
+manager (VMM) is directly installed on the hardware system is 
+known as hardware virtualization.
+ The main job of hypervisor is to control and monitoring the 
+processor, memory and other hardware resources.
+ After virtualization of hardware system we can install different 
+operating system on it and run different applications on those OS.
+Usage:
+ Hardware virtualization is mainly done for the server platforms, 
+because controlling virtual machines is much easier than controlling 
+a physical server.
+
+
+----- PAGE 26 -----
+OPERATING SYSTEM VIRTUALIZATION
+ When the virtual machine software or virtual machine 
+manager (VMM) is installed on the Host operating 
+system instead of directly on the hardware system is known 
+as operating system virtualization.
+Usage:
+ Operating System Virtualization is mainly used for testing the 
+applications on different platforms of OS.
+
+
+----- PAGE 27 -----
+ SERVER VIRTUALIZATION
+ When the virtual machine software or virtual machine 
+manager (VMM) is directly installed on the Server system is 
+known as server virtualization.
+Usage:
+ Server virtualization is done because a single physical server 
+can be divided into multiple servers on the demand basis and 
+for balancing the load.
+
+
+----- PAGE 28 -----
+STORAGE VIRTUALIZATION
+ Storage virtualization is the process of grouping the physical 
+storage from multiple network storage devices so that it looks 
+like a single storage device.
+ Storage virtualization is also implemented by using software 
+applications.
+Usage:
+ Storage virtualization is mainly done for back-up and recovery 
+purposes.
+
+
+----- PAGE 29 -----
+CLOUD SERVICE MODELS
+
+
+----- PAGE 30 -----
+INFRASTRUCTURE AS A SERVICE (IAAS)
+ IaaS is also known as Hardware as a Service (HaaS).
+ It is a computing infrastructure managed over the internet. 
+ The main advantage of using IaaS is that it helps users to avoid the 
+cost and complexity of purchasing and managing the physical 
+servers.
+Characteristics of IaaS
+ Resources are available as a service
+ Services are highly scalable
+ Dynamic and flexible
+ GUI and API-based access
+ Automated administrative tasks
+Example: DigitalOcean, Linode, Amazon Web Services (AWS), 
+Microsoft Azure, Google Compute Engine (GCE), Rackspace, and 
+Cisco Metacloud.
+
+
+----- PAGE 31 -----
+PLATFORM AS A SERVICE (PAAS)
+ PaaS cloud computing platform is created for the programmer to 
+develop, test, run, and manage the applications.
+Characteristics of PaaS
+ Accessible to various users via the same development application.
+ Integrates with web services and databases.
+ Builds on virtualization technology, so resources can easily be scaled 
+up or down as per the organization's need.
+ Support multiple languages and frameworks.
+ Provides an ability to "Auto-scale".
+Example: AWS Elastic Beanstalk, Windows Azure, Heroku, 
+Force.com, Google App Engine, Apache Stratos, Magento Commerce 
+Cloud, and OpenShift.
+
+
+----- PAGE 32 -----
+SOFTWARE AS A SERVICE (SAAS)
+ SaaS is also known as "on-demand software". 
+ It is a software in which the applications are hosted by a cloud 
+service provider. 
+ Users can access these applications with the help of internet 
+connection and web browser.
+Characteristics of SaaS
+ Managed from a central location
+ Hosted on a remote server
+ Accessible over the internet
+ Users are not responsible for hardware and software updates. 
+Updates are applied automatically.
+ The services are purchased on the pay-as-per-use basis
+Example: BigCommerce, 
+Google 
+Apps, 
+Salesforce, 
+Dropbox, 
+ZenDesk, Cisco WebEx, ZenDesk, Slack, and GoToMeeting.
+
+
+----- PAGE 33 -----
+THANK YOU
+

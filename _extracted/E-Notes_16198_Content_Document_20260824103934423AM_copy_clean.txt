@@ -1,0 +1,545 @@
+=== FILE: E-Notes_16198_Content_Document_20260824103934423AM_copy.pdf ===
+=== PAGES: 30 ===
+
+----- PAGE 1 -----
+Infrastructure and Platform as a Service 
+(IaaS/PaaS)
+By: Niral Jadav
+
+
+----- PAGE 2 -----
+Introduction
+• Infrastructure as a Service (IaaS) is a cloud computing delivery model that
+provides virtualized computing resources over the internet.
+• Instead of purchasing and maintaining physical servers, storage, and networking
+equipment, users rent these resources on-demand from cloud service providers.
+• IaaS forms the foundational layer of cloud computing (alongside PaaS and SaaS)
+and offers flexibility, scalability, and cost-effectiveness for businesses and
+developers.
+
+
+----- PAGE 3 -----
+Key characteristics include:
+• On-demand self-service – Users can provision resources as needed without
+human intervention from the provider.
+• Scalability – Capacity can be increased or decreased dynamically.
+• Pay-as-you-go pricing – Customers pay only for the resources they consume.
+• Virtualization – Resources are abstracted and delivered via virtual machines,
+containers, and software-defined networks.
+
+
+----- PAGE 4 -----
+• The evolution of IaaS is closely tied to advancements in virtualization,
+networking, and internet technologies.
+• Early days (Pre-2006) – Organizations relied heavily on on-premises IT
+infrastructure. This approach involved high capital expenditure, long setup times,
+and limited scalability.
+• Rise of virtualization (2000–2006) – Virtualization technologies (e.g., VMware,
+Xen, KVM) enabled multiple virtual machines to run on a single physical server,
+leading to more efficient utilization.
+• Launch of public IaaS services (2006 onwards) – Amazon Web Services (AWS)
+launched EC2, followed by Google Cloud, Microsoft Azure, and others. These
+services allowed businesses to deploy and scale infrastructure globally in
+minutes.
+• Current trends – Modern IaaS integrates automation, AI-driven resource
+management, hybrid cloud support, and enhanced security to meet diverse
+enterprise needs.
+
+
+----- PAGE 5 -----
+• A variety of academic and industry research has explored IaaS in terms of
+architecture, performance optimization, security, and integration.
+Architecture & Resource Management
+• Studies such as Buyya et al. (2009) introduced cloud architecture frameworks
+like Aneka for resource allocation and workload scheduling in IaaS.
+• Research
+has
+focused
+on
+orchestration
+using
+tools
+like
+OpenStack,
+Kubernetes, and Terraform for automated provisioning.
+Performance Optimization
+• Works by Calheiros et al. (2011) proposed CloudSim, a simulation toolkit for
+modeling and evaluating IaaS performance.
+• Dynamic load balancing, VM migration, and auto-scaling algorithms have been
+extensively studied to improve cost-efficiency.
+
+
+----- PAGE 6 -----
+Security & Compliance
+•Research by Subashini and Kavitha (2011) highlighted vulnerabilities in IaaS,
+including VM isolation breaches, data leakage, and denial-of-service attacks.
+•Solutions include encrypted storage, secure APIs, and compliance with standards
+like ISO 27001 and HIPAA.
+Integration with Emerging Technologies
+•Recent studies explore integrating IaaS with edge computing and IoT for low-
+latency applications.
+•AI-based provisioning systems are being investigated for predictive scaling and
+energy-efficient cloud operations.
+
+
+----- PAGE 7 -----
+VIRTUAL PROVISIONING IN VIRTUALIZED DATA CENTER
+• VMP is capability to present a LUN to a computer system with extra capacity than
+what is physically allotted to the LUN on the storage array.
+It can be implemented by:
+•
+Computer layer
+•
+Storage layer
+•
+Physical storage is allotted only when compute needs it and the provisioning
+decisions are not bound by presently accessible storage.
+• The physical storage is allotted from a shared pool of physical capacity to the
+application “on-demand”.
+• This gives more efficient storage utilization by minimizing the allotted amount, but
+unused physical storage
+
+
+----- PAGE 8 -----
+NEED FOR VIRTUAL PROVISIONING :
+•
+Administrators typically allot storage space based on the anticipated
+growth of storage.
+•
+This is because they want to minimize the management overhead and
+application downtime needed to add new storage afterwards.
+•
+This results in the over-provisioning of the storage capacity which
+leads
+to
+greater
+costs,
+more
+power, cooling and floor space
+requirements and lower capacity utilization.
+•
+Virtual Provisioning addresses these challenges by giving more efficient
+utilization of storage by minimizing the amount of allotted, but unused
+physical storage.
+
+
+----- PAGE 9 -----
+ADVANTAGES OF VIRTUAL PROVISIONING :
+•
+Minimizes the operating and storage cost.
+•
+Decreases downtime.
+•
+Improves capacity utilization.
+•
+Minimizes administrative overhead.
+
+
+----- PAGE 10 -----
+VIRTUAL MACHINES PROVISIONING ANDMANAGEABILITY
+•
+Virtual
+provisioning
+is
+a
+virtual
+storage
+network
+(VSAN)-based
+technology in which storage space is allocated on demand to devices.
+•
+This process allows virtualized environments to control the allocation
+and
+management
+of
+physical
+disk
+storage connected with
+virtual machines (VM).
+•
+Virtual Machine Management Service, also known as VMMS
+or
+vmms.exe, is the main module in Microsoft Windows operating
+system that controls all aspects of Hyper-V server virtualization.
+
+
+----- PAGE 11 -----
+VIRTUAL MACHINE MIGRATION SERVICES
+•
+Virtual machine migration is the task of moving a virtual
+machine
+from
+one
+physical
+hardware
+environment
+to
+another.
+VM Migration Type
+Description
+Cold Migration
+Before migration, the virtual machine must
+be powered off, after doing this task.
+The
+old
+one
+should
+be
+deleted from source
+host. Moreover, the virtual machine
+need
+not to be on shared storage.
+Warm Migration
+Whenever
+transfer
+OS
+and
+any
+application, there is no need to suspend the
+source host. Basically it has high demand in
+public cloud.
+Live Migration
+It is the process of moving a running virtual
+machine without stopping the OS and other
+applications from source host to destination
+host.
+
+
+----- PAGE 12 -----
+TYPES OF VIRTUAL MACHINE MIGRATION 
+TECHNIQUES
+•
+Pre- Copy Migration
+•
+Post-Copy Migration
+
+
+----- PAGE 13 -----
+PRE- COPY MIGRATION
+•
+In this migration, the hypervisor copies all memory page from source
+machine to destination machine while the virtual machine is running.
+It has two phases:
+•
+Warm- up Phase and
+•
+stop and copy phase.
+
+
+----- PAGE 14 -----
+WARM UP PHASE:
+•
+During
+copying
+all
+memory
+pages
+from
+source
+to destination, some
+memory pages changed because of source machine CPU is active.
+•
+All the changed memory paged known as dirty pages.
+•
+All these dirty pages are required to recopy on destination machine;
+this phase is called as warm up phase.
+
+
+----- PAGE 15 -----
+STOP & COPY PHASE:
+•
+Warm up phase is repeated until all the dirty pages recopied on
+destination machine.
+•
+This time CPU of source machine is deactivated till all memory pages will
+transfer another machine.
+•
+Ultimately
+at
+this
+time
+CPU
+of
+both
+source
+and destination is
+suspended, this is known as down time phase.
+•
+This is the main thing that has to explore in migration for its
+optimization.
+
+
+----- PAGE 16 -----
+[NO TEXT / LIKELY IMAGE-ONLY PAGE]
+
+----- PAGE 17 -----
+POST- COPY MIGRATION
+•
+In this technique, VM at the source is suspended to start post
+copy
+VM
+migration.
+•
+When VM is suspended, execution state of the VM (i.e. CPU
+state,
+registers, non-pageable memory) is transferred to the
+target.
+•
+In parallel the sources actively send the remaining memory pages of the
+VM to the target. This process is known as pre-paging.
+
+
+----- PAGE 18 -----
+•
+At the target, if the VM tries to access a page that has not been transferred yet, it
+generates a page fault, also known as network faults.
+•
+These faults are redirect to the source, which responds with the faulted pages.
+•
+Due
+to this, the performance of applications is degrading with number of
+network faults.
+•
+To overcome this, pre-paging scheme is used to push pages after the last fault
+by dynamically using page transmission order.
+
+
+----- PAGE 19 -----
+[NO TEXT / LIKELY IMAGE-ONLY PAGE]
+
+----- PAGE 20 -----
+INTEGRATION OF PRIVATE AND PUBLIC CLOUD
+
+
+----- PAGE 21 -----
+Integrating public and private clouds hybrid cloud.
+Private cloud: Provides control, security, and customization for sensitive data and
+applications.
+Public cloud: Offers scalability, elasticity, and access to on-demand resources for
+flexible workloads.
+
+
+----- PAGE 22 -----
+Steps of integration of public and private clouds:
+1. Identify Workloads and Data:
+• Determine which workloads and data are suitable for the public cloud or the
+private cloud according to regulatory requirements, security concerns, or
+performance considerations.
+2. Choose Integration Models:
+• Cloud Bursting: dynamically scale workloads from the private cloud to the public
+cloud during periods of peak demand.
+3. Implement Hybrid Cloud Management Platform:
+• A hybrid cloud management platform (CMP) to orchestrate (the process of
+automating tasks to manage connections and operations of workloads on
+private and public clouds.).
+• manage workloads across public and private clouds from a unified interface.
+• Examples include VMware Cloud Foundation, Red Hat OpenShift, and Microsoft
+Azure Arc.
+
+
+----- PAGE 23 -----
+4. Optimize Workload Placement:
+- Define policies and criteria for workload placement based on factors such as
+performance requirements, cost considerations, data sensitivity, and compliance
+regulations.
+5. Ensure Security and Compliance:
+- Implement consistent security policies, controls, and encryption mechanisms
+to protect data and workloads.
+6. Disaster Recovery and Business Continuity:
+- Implement a comprehensive disaster recovery (DR) and business continuity
+(BC) strategy that spans both public and private cloud environments.
+7. Training and Documentation:
+- Provide training to IT staff and users on managing and operating workloads in
+a hybrid cloud environment.
+
+
+----- PAGE 24 -----
+Challenges of Hybrid Cloud Integration:
+Complexity: Managing two separate environments (private and public cloud)
+adds complexity.
+Security Considerations: Data transfer between environments requires robust
+security measures to ensure data privacy and compliance.
+Vendor Lock-in: Integration between different cloud providers can be
+challenging, potentially leading to vendor lock-in with a specific provider.
+
+
+----- PAGE 25 -----
+TECHNOLOGIES AND TOOLS FOR CLOUDCOMPUTING
+Virtualization: Virtualization
+technology in cloud
+computing involves
+the
+use
+of
+specialized
+programming
+techniques to create a virtual version of a computer resource to
+allow
+for
+cloud
+service
+providers
+to
+bring
+multiple
+operating systems and computer systems under one virtual
+machine to efficiently
+distribute
+an application
+among 
+multiple
+users
+within
+one
+organization
+or
+numerous
+organizations in a cost-efficient and convenient manner.
+•
+This
+cloud
+computing
+technique
+offers
+unparalleled
+hardware
+flexibility
+and
+significantly
+brings
+down
+IT
+maintenance and infrastructure costs, and is the first entry on
+the cloud computing technologies list.
+
+
+----- PAGE 26 -----
+•
+Service-Oriented Architecture (SOA): Service Oriented Architecture
+is the latest technology in cloud computing that refers to an online
+architecture that supports a collection of services.
+•
+There is an established communication protocol between the
+components
+of
+various
+applications
+or
+services,
+and
+this
+communication occurs over a network to provide the user with
+certain services.
+
+
+----- PAGE 27 -----
+•
+Grid Computing: One of the other technologies used in cloud
+computing is
+grid
+computing,
+which
+allows
+for
+multiple
+computer resources to combine and interact to achieve a common
+objective.
+•
+Grid computing
+is
+particularly
+beneficial
+when
+large-scale
+computing tasks are undertaken and are too burdensome for
+one
+individual computing resource to handle.
+•
+Such
+a
+job
+is
+broken
+down
+into
+smaller
+components
+and
+distributed among the grid.
+•
+The computing resources within the grid communicate with
+each
+other and work together to solve the problem.
+
+
+----- PAGE 28 -----
+•
+Utility Computing: Utility computing is one of the most
+common answers given to the question, ‘what is cloud-based
+technology?’
+•
+Enabling technology for cloud computing, utility computing
+infrastructure is a software service provision business model
+that employs a pay-per-use model.
+•
+Users can subscribe to preferred services and only pay for
+those services
+without
+undertaking
+a
+massive
+initial
+expenditure.
+•
+This offers flexibility for users who wish to change or
+discontinue the usage of a cloud service.
+
+
+----- PAGE 29 -----
+RESOURCE PROVISIONING SERVICES
+•
+Resource Provisioning means the selection, deployment, and
+run-
+time management
+of
+software
+(e.g.,
+database
+server
+management
+systems,
+load
+balancers)
+and
+hardware
+resources
+(e.g.,
+CPU,
+storage,
+and
+network)
+for
+ensuring
+guaranteed performance for applications.
+
+
+----- PAGE 30 -----
+METHODS OF RESOURCE PROVISIONIBG
+Static Provisioning
+•
+Predictable and Unchanging demands
+•
+Advance preparation of resources
+•
+Charges as flat free or monthly basis
+Dynamic Provisioning
+•
+Demand on application may change or vary
+•
+Allocate more resources when needed and remove when it use
+User-Self Provisioning
+•
+Resources are purchased from web
+•
+Create user account
+

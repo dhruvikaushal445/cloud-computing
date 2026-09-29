@@ -1,0 +1,16 @@
+=== FILE: Assignment_16190_Content_Document_20260824102629723AM.pdf ===
+=== PAGES: 1 ===
+
+----- PAGE 1 -----
+ 
+ 
+ 
+Established under the Gujarat Private Universities Amendment Act 2011 and recognized under section 22 and 2(f) of UGC 
+Assignment 3 
+1. Explain IaaS in brief. 
+2. Discuss Virtual Provisioning in Virtualized Data Centre. 
+3. Explain Virtual Machine Migration Services. 
+4. Discuss Integration of Public and Private Cloud. 
+5. Explain any three Tools and Technology used in Cloud Computing. 
+ 
+
